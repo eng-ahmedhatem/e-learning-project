@@ -29,7 +29,6 @@
   background-repeat: no-repeat;
   height: 600px;
   background-position: center;
-  padding-inline: 100px;
   max-width: 100%;
 }
 .four_zero_four_bg h1 {
@@ -51,4 +50,11 @@
 }
 .contant_box_404 .title-1 + p {
   font-size: 20px;
+}
+
+@media (max-width: 400px) {
+  .four_zero_four_bg {
+    height: 502px;
+    
+  }
 }

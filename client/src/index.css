@@ -6,3 +6,20 @@
   src: url("./fonts/Abd ElRady Pro Regular.otf");
   font-display: swap;
 }
+@font-face {
+  font-family: cocon;
+  src: url("./fonts/cocon-next-arabic.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: jooza;
+  src: url("./fonts/flat-jooza-regular.ttf");
+  font-display: swap;
+}
+
+html {
+  --btn-bg:#8b5dff;
+  --mainFont:radyPro;
+  font-family: radyPro;
+  direction: rtl;
+}

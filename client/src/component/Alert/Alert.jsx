@@ -25,14 +25,14 @@ export default function Alert({ title, body, type }) {
   }
   return (
     <div
-      className={`alert alert-${type} absolute w-96 h-max text-center rounded-lg top-2 right-5 lg:right-20 overflow-hidden`}
+      className={`alert z-30 alert-${type} absolute w-11/12 md:w-96 h-max text-center rounded-lg top-2 right-5 lg:right-20 overflow-hidden`}
     >
-      <div className="content-t p-2 ">
+      <div className="content-t p-1 md:p-2 ">
         <i className="text-2xl cursor-pointer" onClick={handelClose}>
           <IoClose />
         </i>
-        <h1 className="text-xl">{title}</h1>
-        <p className="text-lg">{body}</p>
+        <h1 className="text-lg md:text-xl">{title}</h1>
+        <p className="text-base md:text-lg">{body}</p>
       </div>
       <span className="timer block w-0 h-1"></span>
     </div>

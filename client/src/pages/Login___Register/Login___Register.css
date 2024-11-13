@@ -123,21 +123,32 @@ input:focus {
   }
 }
 
+.parent {
+  perspective: 5000px;
+}
+.parent-log_reg{ 
+  transform-style: preserve-3d;
+  transition:transform .8s cubic-bezier(0.58, 0.02, 0.1, 0.99) ;
+  transform-origin: center right;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+}
+
+.changeMode {
+  transform: translateX(-100%) rotateY(-180deg);
+}
 .face {
   position: absolute;
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
   backface-visibility: hidden;
+  z-index: 5;
+
 }
-.parent-log_reg {
-  transform-style: preserve-3d;
-  transition: 5s;
-}
-.parent:hover .parent-log_reg {
-  transition: 5s;
-  transform: rotateY(-180deg);
-}
+
+
 .face-2 {
   transform: rotateY(180deg);
 }
+

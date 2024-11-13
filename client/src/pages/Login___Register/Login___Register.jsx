@@ -2,90 +2,88 @@ import "./Login___Register.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 import { Aleart } from "../../component";
 import Register from "./Register";
 
 export default function Login___Register() {
-  const [formData_login, setFormData_Login] = useState({
-    userName_login: "",
-    userPassword_login: "",
-    remember_me: false,
-    password_hiddenUi: true,
-    error: {
-      member: "",
+  const [mode, setMode] = useState(false);
+  const [rememberMe, setRemember] = useState(false);
+  const [img_inputPassword, setImg] = useState(true);
+  const [checkLocal_storage, set_checkLocal_storage] = useState(
+    JSON.parse(localStorage.getItem("FormData_login"))
+  );
+  useEffect(() => {
+    if (checkLocal_storage) {
+      setRemember(!rememberMe);
+    }
+  }, [checkLocal_storage]);
+  const validationSchema = Yup.object({
+    userName_login: Yup.string().required("هذا الحقل مطلوب"),
+    userPassword_login: Yup.string().required("هذا الحقل مطلوب"),
+  });
+  const formik = useFormik({
+    initialValues: {
+      userName_login: checkLocal_storage && checkLocal_storage.userName,
+      userPassword_login:
+        JSON.parse(localStorage.getItem("FormData_login")) &&
+        JSON.parse(localStorage.getItem("FormData_login")).password,
+    },
+    validationSchema,
+    onSubmit: (data) => {
+      console.log(data);
     },
   });
 
-  function handel_loginForm(e) {
-    setFormData_Login({ ...formData_login, [e.target.name]: e.target.value });
-  }
-  function remember(e) {
-    if (!formData_login.userName_login && !formData_login.userPassword_login) {
-      return e.preventDefault();
-    }
-    if (e.target.checked) {
-      localStorage.setItem("FormData_login", JSON.stringify(formData_login));
-      return;
-    }
-    localStorage.removeItem("FormData_login");
-  }
-  function handelCheck_remember(e) {
-    setFormData_Login({
-      ...formData_login,
-      remember_me: !formData_login.remember_me,
-    });
+  // function handelBtn_login(e) {
+  //   e.preventDefault()
 
-    if (!formData_login.userName_login || !formData_login.userPassword_login) {
+  // }
+  // function handel_loginForm(e) {
+  //   console.log("ahmed")
+  // }
+  function handelRemembre(e) {
+    if (formik.values.userName_login && formik.values.userPassword_login) {
+      if (e.target.checked) {
+        localStorage.setItem(
+          "FormData_login",
+          JSON.stringify({
+            userName: formik.values.userName_login,
+            password: formik.values.userPassword_login,
+          })
+        );
+        setRemember(!rememberMe);
+      } else {
+        localStorage.removeItem("FormData_login");
+        setRemember(!rememberMe);
+      }
+    } else {
+      set_checkLocal_storage((prev) => (prev = {}));
       e.preventDefault();
-      setFormData_Login({
-        ...formData_login,
-        error: {
-          ...formData_login.error,
-          member: {
-            title: "حقول فارغة",
-            type: "danger",
-            body: "من فضلك اكمل الحقول الفارغة لكي استطيع تذكر البيانات المدخله 🙂 ",
-          },
-        },
-      });
     }
-
-    const to = setTimeout(() => {
-      setFormData_Login({
-        ...formData_login,
-        error: { ...formData_login.error, member: "" },
-      });
-    }, 5000);
-    return () => clearTimeout(to);
   }
-  useEffect(() => {
-    const localData = JSON.parse(localStorage.getItem("FormData_login"));
 
-    if (localData) {
-      setFormData_Login({
-        ...localData,
-        remember_me: !formData_login.remember_me,
-      });
-      console.log(formData_login);
-      // setFormData_Login(localData);
-    }
-  }, []);
   return (
     <div>
-      {formData_login.error.member && (
+      {/* {formData_login.error.member && (
         <Aleart
-          title={formData_login.error.member.title}
-          type={formData_login.error.member.type}
-          body={formData_login.error.member.body}
+          title={""}
+          type={""}
+          body={""}
         />
-      )}
+      )} */}
 
       <div className="parent w-full h-screen flex justify-center items-center bg-[#f6f5f7]">
-        <div className="relative parent-log_reg rounded-3xl overflow-hidden min-h-[75vh]  shadow-xl w-11/12">
-          <div className="face face-1  w-full min-h-[75vh]">
+        <div
+          className={`relative parent-log_reg rounded-3xl  min-h-[75vh]  shadow-xl w-11/12 ${
+            mode && "changeMode"
+          }`}
+        >
+          <div className="face overflow-y-auto face-1  w-full min-h-[75vh]">
             <div className="parent-tow-cont  flex h-[75vh] content-sign-up">
-              <div className="content w-full lg:w-2/4 p-11 ">
+              <div className="content  w-full lg:w-2/4 p-4 py-11 md:p-11 ">
                 <Link
                   to={"/"}
                   className="flex text-[#8B5DFF] text-l items-center transition hover:opacity-50 mb-2 lg:mb-5"
@@ -116,12 +114,15 @@ export default function Login___Register() {
                         id="userName_login"
                         autoFocus
                         className="bg-[#eee] h-8 mb-4 w-full px-2"
-                        value={formData_login.userName_login}
-                        onChange={handel_loginForm}
+                        value={formik.values.userName_login}
+                        onChange={formik.handleChange}
                       />
-                      <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
-                        كلمه المرور خاطئة
-                      </span>
+                      {formik.touched.userName_login &&
+                        formik.errors.userName_login && (
+                          <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
+                            {formik.errors.userName_login}
+                          </span>
+                        )}
                     </div>
                     <div className="userPassword_login mb-8 w-full relative">
                       <label
@@ -130,28 +131,16 @@ export default function Login___Register() {
                       >
                         كلمة المرور :
                       </label>
-                      {formData_login.password_hiddenUi ? (
+                      {img_inputPassword ? (
                         <img
-                          onClick={() =>
-                            setFormData_Login({
-                              ...formData_login,
-                              password_hiddenUi:
-                                !formData_login.password_hiddenUi,
-                            })
-                          }
+                          onClick={() => setImg(!img_inputPassword)}
                           className=" h-6 top-2/4 -translate-y-[1%] opacity-30 hover:opacity-100 left-3 cursor-pointer transition absolute"
                           src="./imgs/Login___Register/view.png"
                           alt=""
                         />
                       ) : (
                         <img
-                          onClick={() =>
-                            setFormData_Login({
-                              ...formData_login,
-                              password_hiddenUi:
-                                !formData_login.password_hiddenUi,
-                            })
-                          }
+                          onClick={() => setImg(!img_inputPassword)}
                           className=" h-6 top-2/4 -translate-y-[1%] opacity-30 hover:opacity-100 left-3 cursor-pointer transition absolute"
                           src="./imgs/Login___Register/hide.png"
                           alt=""
@@ -160,28 +149,30 @@ export default function Login___Register() {
 
                       <input
                         className="bg-[#eee] mb-4 w-full h-8 px-2"
-                        type={
-                          formData_login.password_hiddenUi ? "password" : "text"
-                        }
+                        type={img_inputPassword ? "password" : "text"}
                         name="userPassword_login"
                         id="userPassword_login"
-                        value={formData_login.userPassword_login}
-                        onChange={handel_loginForm}
+                        value={formik.values.userPassword_login}
+                        onChange={formik.handleChange}
                       />
-                      <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
-                        كلمه المرور خاطئة
-                      </span>
+                      {formik.touched.userPassword_login &&
+                        formik.errors.userPassword_login && (
+                          <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
+                            {formik.errors.userPassword_login}
+                          </span>
+                        )}
                     </div>
                   </div>
                   <div className="row-remember_forget flex justify-evenly items-center ">
                     <div className="checkbox-wrapper-33">
                       <label className="checkbox">
                         <input
-                          onChange={remember}
-                          onClick={handelCheck_remember}
+                          name="rememberMe"
+                          id="rememberMe"
+                          checked={rememberMe}
+                          onClick={(e) => handelRemembre(e)}
                           className="checkbox__trigger visuallyhidden"
                           type="checkbox"
-                          checked={formData_login.remember_me}
                         />
                         <span className="checkbox__symbol ">
                           <svg
@@ -209,13 +200,20 @@ export default function Login___Register() {
                       type="submit"
                       name="send"
                       value="تسجيل الدخول"
+                      onClick={formik.handleSubmit}
                     />
-                    <button className="newUser_btn border border-[#8B5DFF] hover:bg-[#8B5DFF] hover:text-[#FFF7D1] text-[#8B5DFF] transition h-8 basis-2/4 rounded-[5px] ">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setMode(!mode);
+                      }}
+                      className="newUser_btn border border-[#8B5DFF] hover:bg-[#8B5DFF] hover:text-[#FFF7D1] text-[#8B5DFF] transition h-8 basis-2/4 rounded-[5px] "
+                    >
                       إنشاء حساب
                     </button>
                   </div>
                 </form>
-                <div className="orLogin flex justify-center items-center flex-col mt-6  2xl:mt-11">
+                <div className="orLogin pb-11 md:pb-0 flex justify-center items-center flex-col mt-6  2xl:mt-11">
                   <h3 className="mb-4">أو تسجيل الدخول من خلال</h3>
                   <a href="" className="flex items-center justify-center">
                     <span className="text-3xl">
@@ -225,7 +223,7 @@ export default function Login___Register() {
                   </a>
                 </div>
               </div>
-              <div className="img  w-2/4 hidden lg:block relative ">
+              <div className="img  overflow-hidden w-2/4 hidden lg:block relative ">
                 <img
                   src="./imgs/Login___Register/e-learning_login.webp"
                   className="h-full  w-full absolute lg:-bottom-[97px] 2xl:-bottom-[53px] right-0 object-cover "
@@ -235,7 +233,12 @@ export default function Login___Register() {
             </div>
           </div>
 
-          <Register/>
+          <Register
+            eventClick={(e) => {
+              e.preventDefault();
+              setMode(!mode);
+            }}
+          />
         </div>
       </div>
     </div>

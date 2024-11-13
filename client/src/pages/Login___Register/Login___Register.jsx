@@ -26,10 +26,10 @@ export default function Login___Register() {
   });
   const formik = useFormik({
     initialValues: {
-      userName_login: checkLocal_storage && checkLocal_storage.userName,
+      userName_login: checkLocal_storage ? checkLocal_storage.userName : '',
       userPassword_login:
-        JSON.parse(localStorage.getItem("FormData_login")) &&
-        JSON.parse(localStorage.getItem("FormData_login")).password,
+        JSON.parse(localStorage.getItem("FormData_login")) ?
+        JSON.parse(localStorage.getItem("FormData_login")).password: '',
     },
     validationSchema,
     onSubmit: (data) => {
@@ -60,8 +60,8 @@ export default function Login___Register() {
         setRemember(!rememberMe);
       }
     } else {
-      set_checkLocal_storage((prev) => (prev = {}));
       e.preventDefault();
+      set_checkLocal_storage((prev) => (prev = null));
     }
   }
 
@@ -169,8 +169,8 @@ export default function Login___Register() {
                         <input
                           name="rememberMe"
                           id="rememberMe"
-                          checked={rememberMe}
-                          onClick={(e) => handelRemembre(e)}
+                          checked={rememberMe ? true : false}
+                          onChange={handelRemembre}
                           className="checkbox__trigger visuallyhidden"
                           type="checkbox"
                         />

@@ -7,6 +7,9 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Aleart } from "../../component";
 import Register from "./Register";
+import { LuLogIn } from "react-icons/lu";
+import { TiUserAdd } from "react-icons/ti";
+
 
 export default function Login___Register() {
   const [mode, setMode] = useState(false);
@@ -75,9 +78,9 @@ export default function Login___Register() {
         />
       )} */}
 
-      <div className="parent w-full h-screen flex justify-center items-center bg-[#f6f5f7]">
+      <div className="parent w-full h-screen flex justify-center items-center bg-[#bdd4da]">
         <div
-          className={`relative parent-log_reg rounded-3xl  min-h-[75vh]  shadow-xl w-11/12 ${
+          className={`relative parent-log_reg rounded-3xl  bg-[#c8d5d8] min-h-[75vh]  shadow-xl w-11/12 ${
             mode && "changeMode"
           }`}
         >
@@ -86,7 +89,7 @@ export default function Login___Register() {
               <div className="content  w-full lg:w-2/4 p-4 py-11 md:p-11 ">
                 <Link
                   to={"/"}
-                  className="flex text-[#8B5DFF] text-l items-center transition hover:opacity-50 mb-2 lg:mb-5"
+                  className="flex text-[--btn-bg] text-l items-center transition hover:opacity-50 mb-2 lg:mb-5"
                 >
                   <span className="ml-2 text-3xl">
                     <FaHome />
@@ -94,17 +97,17 @@ export default function Login___Register() {
                   <span>العودة للصفحة الرئيسية</span>
                 </Link>
                 <div className=" text-start  w-full ">
-                  <h2 className="text-2xl  sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-5">
+                  <h2 className="text-2xl text-[--c-text-blue] sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-5">
                     مرحبا بك من جديد قم بتسجيل الدخول الأن
                   </h2>
-                  <p className="text-xl lg:text-3xl mb-2 sm:mb-9 ">
+                  <p className="text-xl text-[--c-text-red] lg:text-3xl mb-2 sm:mb-9 ">
                     من الرائع عودتك !
                   </p>
                 </div>
                 <form action="" className="">
                   <div className="row-fill w-full lg:w-10/12 mx-auto  flex flex-col justify-center items-center">
                     <div className="userName_login w-full mb-4 relative">
-                      <label htmlFor="userName_login" className="mb-4 block">
+                      <label htmlFor="userName_login" className="mb-4 text-[--c-text-yellow] block">
                         إسم المستخدم :
                       </label>
 
@@ -113,7 +116,7 @@ export default function Login___Register() {
                         name="userName_login"
                         id="userName_login"
                         autoFocus
-                        className="bg-[#eee] h-8 mb-4 w-full px-2"
+                        className="bg-[--input-bg] h-8 mb-4 w-full px-2"
                         value={formik.values.userName_login}
                         onChange={formik.handleChange}
                       />
@@ -127,7 +130,7 @@ export default function Login___Register() {
                     <div className="userPassword_login mb-8 w-full relative">
                       <label
                         htmlFor="userPassword_login"
-                        className="mb-4 block"
+                        className="mb-4 block text-[--c-text-yellow]"
                       >
                         كلمة المرور :
                       </label>
@@ -148,7 +151,8 @@ export default function Login___Register() {
                       )}
 
                       <input
-                        className="bg-[#eee] mb-4 w-full h-8 px-2"
+                      placeholder=""
+                        className="bg-[--input-bg] mb-4 w-full h-8 px-2"
                         type={img_inputPassword ? "password" : "text"}
                         name="userPassword_login"
                         id="userPassword_login"
@@ -187,34 +191,44 @@ export default function Login___Register() {
                             <path d="M4 14l8 7L24 7"></path>
                           </svg>
                         </span>
-                        <p className="checkbox__textwrapper">تذكرني ؟</p>
+                        <p className="checkbox__textwrapper text-[--c-text-yellow]">تذكرني ؟</p>
                       </label>
                     </div>
-                    <span className="text-[#8B5DFF] cursor-pointer transition hover:opacity-50">
+                    <span className="text-[--btn-bg] cursor-pointer transition hover:opacity-50">
                       نسيت كلمة المرور ؟
                     </span>
                   </div>
                   <div className="row_buttons mt-5 lg:mt-4 2xl:mt-8 w-10/12 mx-auto flex  justify-center gap-4 ">
+                  <div onClick={formik.handleSubmit} className="bg-[--btn-bg]  flex justify-center items-center border border-[--btn-bg] scale-95 hover:scale-105  hover:bg-[transparent] transition cursor-pointer hover:text-[--btn-bg] h-[40px] basis-2/4 rounded-[5px] text-[#FFF7D1]">
+                  <span className="text-2xl ml-4 block"> 
+                  <LuLogIn />
+
+                  </span>
                     <input
-                      className="bg-[#8B5DFF]  border border-[#8B5DFF]  hover:bg-[transparent] transition cursor-pointer hover:text-[#8B5DFF] h-8 basis-2/4 rounded-[5px] text-[#FFF7D1]"
+                      className="cursor-pointer"
                       type="submit"
                       name="send"
                       value="تسجيل الدخول"
-                      onClick={formik.handleSubmit}
+                      
                     />
+                  </div>
+                  <div onClick={()=>setMode(!mode)} className="vibrate-1 cursor-pointer hover:animate-none newUser_btn border flex justify-center items-center h-[40px] border-[--btn-bg] hover:bg-[--btn-bg] scale-95 hover:scale-105 hover:text-[#FFF7D1] text-[--btn-bg] transition  basis-2/4 rounded-[5px] ">
+                  <span className="text-2xl ml-4 block ">
+                  <TiUserAdd  />
+                  </span> 
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        setMode(!mode);
                       }}
-                      className="newUser_btn border border-[#8B5DFF] hover:bg-[#8B5DFF] hover:text-[#FFF7D1] text-[#8B5DFF] transition h-8 basis-2/4 rounded-[5px] "
+                      
                     >
                       إنشاء حساب
                     </button>
                   </div>
+                  </div>
                 </form>
                 <div className="orLogin pb-11 md:pb-0 flex justify-center items-center flex-col mt-6  2xl:mt-11">
-                  <h3 className="mb-4">أو تسجيل الدخول من خلال</h3>
+                  <h3 className="mb-4 text-[--btn-bg] ">أو تسجيل الدخول من خلال</h3>
                   <a href="" className="flex items-center justify-center">
                     <span className="text-3xl">
                       <FcGoogle />
@@ -223,10 +237,10 @@ export default function Login___Register() {
                   </a>
                 </div>
               </div>
-              <div className="img  overflow-hidden w-2/4 hidden lg:block relative ">
+              <div className="img relative  rotate  overflow-hidden w-2/4 hidden lg:block  ">
                 <img
                   src="./imgs/Login___Register/e-learning_login.webp"
-                  className="h-full  w-full absolute lg:-bottom-[97px] 2xl:-bottom-[53px] right-0 object-cover "
+                  className="h-full aria-busy:  w-full absolute lg:-bottom-[97px] 2xl:-bottom-[53px] right-0 object-cover "
                   alt="img-login"
                 />
               </div>

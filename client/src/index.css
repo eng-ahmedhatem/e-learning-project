@@ -12,13 +12,23 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "3asomy";
+  src: url("./fonts/DG 3asomy Regular.ttf");
+  font-display: swap;
+}
+/* @font-face {
   font-family: jooza;
   src: url("./fonts/flat-jooza-regular.ttf");
   font-display: swap;
-}
+} */
 
 html {
-  --btn-bg:#8b5dff;
+  --btn-bg:#569d6d;
+  --c-text-red:#dc41539e;
+  --c-text-blue:#0ca9be;
+  --c-text-yellow:#ea8d34;
+  --input-bg:#b5d8d653;
+
   --mainFont:radyPro;
   font-family: radyPro;
   direction: rtl;

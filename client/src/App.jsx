@@ -20,6 +20,7 @@ function App() {
               </>
             }
           />
+          
           <Route exact path="/login-register" element={
             <Suspense fallback={<Loader />}>
               <Login___Register />

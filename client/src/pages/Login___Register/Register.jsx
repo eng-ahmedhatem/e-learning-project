@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { FaHome } from "react-icons/fa";
 import { ar } from "date-fns/locale";
 import { FaCalendarAlt } from "react-icons/fa";
+import { LuLogIn } from "react-icons/lu";
+import { TiUserAdd } from "react-icons/ti";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./Register.css";
@@ -50,10 +52,10 @@ function Register({ eventClick }) {
             <span>العودة للصفحة الرئيسية</span>
           </Link>
           <div className=" text-start  w-full ">
-            <h2 className="text-2xl  sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-5">
+            <h2 className="text-2xl text-[#0ca9be] sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-5">
               أهلاً بكم في بيئتنا الداعمة للنمو والتطور !
             </h2>
-            <p className="text-xl lg:text-3xl mb-2 sm:mb-9 ">
+            <p className="text-xl text-[#dc41539e] lg:text-3xl mb-2 sm:mb-9 ">
               يسعدنا أن نكون جزءًا من رحلتكم التعليمية
             </p>
           </div>
@@ -62,7 +64,7 @@ function Register({ eventClick }) {
               <div className="userName_reg w-full relative">
                 <label
                   htmlFor="userName_reg"
-                  className=" text-sm mb-4 block sm:text-base "
+                  className=" text-sm text-[--c-text-yellow] mb-4 block sm:text-base "
                 >
                   إسم المستخدم :
                 </label>
@@ -71,7 +73,7 @@ function Register({ eventClick }) {
                   name="userName_reg"
                   id="userName_reg"
                   autoFocus
-                  className="bg-[#eee] h-8 mb-4 w-full px-2"
+                  className="bg-[--input-bg] h-8 mb-4 w-full px-2"
                   value={formik.values.userName_reg}
                   onChange={formik.handleChange}
                 />
@@ -85,13 +87,13 @@ function Register({ eventClick }) {
               <div className="password_reg  w-full relative">
                 <label
                   htmlFor="password_reg"
-                  className=" text-sm mb-4 block sm:text-base "
+                  className=" text-sm mb-4 block text-[--c-text-yellow] sm:text-base "
                 >
                   كلمة المرور :
                 </label>
 
                 <input
-                  className="bg-[#eee] mb-4 w-full h-8 px-2"
+                  className="bg-[--input-bg]  mb-4 w-full h-8 px-2"
                   type={"text"}
                   name="password_reg"
                   id="password_reg"
@@ -108,7 +110,7 @@ function Register({ eventClick }) {
               <div className="password_reg_2 w-full relative">
                 <label
                   htmlFor="password_reg_2"
-                  className=" text-sm mb-4 block sm:text-base "
+                  className=" text-sm mb-4 block text-[--c-text-yellow] sm:text-base "
                 >
                   اعد كتابة كلمة المرور :
                 </label>
@@ -117,7 +119,7 @@ function Register({ eventClick }) {
                   name="password_reg_2"
                   id="password_reg_2"
                   autoFocus
-                  className="bg-[#eee] h-8 mb-4 w-full px-2"
+                  className="bg-[--input-bg] h-8 mb-4 w-full px-2"
                   value={formik.values.password_reg_2}
                   onChange={formik.handleChange}
                 />
@@ -131,13 +133,13 @@ function Register({ eventClick }) {
               <div className="email_reg  w-full relative">
                 <label
                   htmlFor="email_reg"
-                  className=" text-sm mb-4 block sm:text-base "
+                  className=" text-sm mb-4 text-[--c-text-yellow] block sm:text-base "
                 >
                   البريد اللإلكتروني :
                 </label>
 
                 <input
-                  className="bg-[#eee] mb-4 w-full h-8 px-2"
+                  className="bg-[--input-bg] mb-4 w-full h-8 px-2"
                   type={"text"}
                   name="email_reg"
                   id="email_reg"
@@ -155,14 +157,14 @@ function Register({ eventClick }) {
                 <div>
                   <label
                     htmlFor="date_reg"
-                    className="mb-4 block text-sm sm:text-base "
+                    className="mb-4 text-[--c-text-yellow] block text-sm sm:text-base "
                   >
                     ادخل تاريخ ميلادك :
                   </label>
                   <div className="relative max-w-sm">
                     <div className="absolute top-0 left-0 z-10 inset-y-0 start-0 flex items-center ps-1 md:ps-3.5 pointer-events-none">
                       <FaCalendarAlt
-                        className="w-6 h-6 text-[#a577ff]"
+                        className="w-6 h-6 text-[--btn-bg]"
                         aria-hidden="true"
                       />
                     </div>
@@ -174,7 +176,7 @@ function Register({ eventClick }) {
                       }
                       locale="ar"
                       dateFormat="dd-MM-yyyy"
-                      className=" bg-white border border-gray-300 text-gray-700 font-[--mainFont] text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-8 md:ps-12 p-3"
+                      className=" bg-white border border-gray-300 text-[--btn-bg] font-[--mainFont] text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-8 md:ps-12 p-3"
                       placeholderText="00-00-0000"
                       calendarClassName="font-[--mainFont] ahmed "
                       id="date_reg"
@@ -192,26 +194,35 @@ function Register({ eventClick }) {
             </div>
 
             <div className="row_buttons mt-8 lg:mt-4 2xl:mt-10 w-10/12 mx-auto flex  justify-center gap-4 ">
+            <div  onClick={(e)=>formik.handleSubmit(e)} className="bg-[--btn-bg] flex scale-95 hover:scale-105 justify-center items-center h-[40px]  border border-[--btn-bg]  hover:bg-[transparent] transition cursor-pointer hover:text-[--btn-bg]  basis-2/4 rounded-[5px] text-[#FFF7D1]"            >
+            <span className="text-2xl ml-4 block ">
+                  <TiUserAdd  />
+                  </span> 
               <input
-                className="bg-[--btn-bg]  border border-[--btn-bg]  hover:bg-[transparent] transition cursor-pointer hover:text-[--btn-bg] h-8 basis-2/4 rounded-[5px] text-[#FFF7D1]"
                 type="submit"
                 name="send"
                 value=" إنشاء حساب"
+                className="cursor-pointer"
                 onClick={(e) => {
                   e.preventDefault();
-                  formik.handleSubmit(e);
                 }}
               />
+            </div>
+            <div  onClick={eventClick}  className=" scale-95 hover:scale-105 newUser_btn flex justify-center cursor-pointer animate-none vibrate-1 items-center h-[40px]  border border-[--btn-bg] hover:bg-[--btn-bg] hover:text-[#FFF7D1] text-[--btn-bg] transition  basis-2/4 rounded-[5px] "            >
+            <span className="text-2xl ml-4 block"> 
+                  <LuLogIn />
+
+                  </span>
               <button
-                onClick={eventClick}
-                className="newUser_btn border border-[--btn-bg] hover:bg-[--btn-bg] hover:text-[#FFF7D1] text-[--btn-bg] transition h-8 basis-2/4 rounded-[5px] "
+                
               >
                 تسجيل الدخول
               </button>
             </div>
+            </div>
           </form>
         </div>
-        <div className="img w-2/4 hidden  lg:block ">
+        <div className="img w-2/4 hidden rotate-h lg:block ">
           <img
             src="./imgs/Login___Register/e-learning_signIn.webp"
             className="h-full w-full object-cover "

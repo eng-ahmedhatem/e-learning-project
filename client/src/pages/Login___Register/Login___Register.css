@@ -1,5 +1,5 @@
 .parent {
-  font-family: jooza;
+  font-family: "3asomy";
 }
 input:focus {
   outline: none;
@@ -9,9 +9,9 @@ input:focus {
   --s-xsmall: 0.625em;
   --s-small: 1.2em;
   --border-width: 1px;
-  --c-primary: rgb(139, 93, 255);
-  --c-primary-20-percent-opacity: rgb(139 93 255 /20%);
-  --c-primary-10-percent-opacity: rgb(139 93 255 / 10%);
+  --c-primary: rgb(234, 141, 52);
+  --c-primary-20-percent-opacity: rgb(234 141 52 /20%);
+  --c-primary-10-percent-opacity: rgb(234 141 52 / 10%);
   --t-base: 0.4s;
   --t-fast: 0.2s;
   --e-in: ease-in;
@@ -152,3 +152,85 @@ backdrop-filter: blur(20px);
   transform: rotateY(180deg);
 }
 
+.vibrate-1 {
+	-webkit-animation: vibrate-1 0.3s 3s linear infinite ;
+	        animation: vibrate-1 0.3s 3s linear infinite ;
+}
+.vibrate-1:hover {
+  animation-play-state: paused;
+}
+@-webkit-keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+            transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+            transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+@keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+            transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+            transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+ 
+
+.rotate  {
+  animation: rotate 5s infinite linear alternate;
+}
+
+@keyframes rotate {
+  to {
+    transform: translateX(50px);
+  }
+}
+.rotate-h  {
+  animation: rotate-h 5s infinite linear alternate;
+}
+
+@keyframes rotate-h {
+  0% {
+    transform: translateY(-20px)
+  }
+  50% {
+    transform: translate(10px,-20px)
+  }
+}

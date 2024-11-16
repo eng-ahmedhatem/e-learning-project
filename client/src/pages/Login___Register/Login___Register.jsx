@@ -106,28 +106,30 @@ export default function Login___Register() {
                 </div>
                 <form action="" className="">
                   <div className="row-fill w-full lg:w-10/12 mx-auto  flex flex-col justify-center items-center">
-                    <div className="userName_login w-full mb-4 relative">
+                    <div className="input-an userName_login w-full mb-4 relative">
                       <label htmlFor="userName_login" className="mb-4 text-[--c-text-yellow] block">
                         إسم المستخدم :
                       </label>
-
+<div className="mb-4 w-full h-max overflow-hidden">
                       <input
                         type="text"
                         name="userName_login"
                         id="userName_login"
                         autoFocus
-                        className="bg-[--input-bg] h-8 mb-4 w-full px-2"
+                        className="bg-[--input-bg] h-8  w-full px-2"
                         value={formik.values.userName_login}
                         onChange={formik.handleChange}
                       />
+                      <span className="inp_anim"></span>
                       {formik.touched.userName_login &&
                         formik.errors.userName_login && (
                           <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                             {formik.errors.userName_login}
                           </span>
                         )}
+</div>
                     </div>
-                    <div className="userPassword_login mb-8 w-full relative">
+                    <div className="input-an userPassword_login mb-8 w-full relative">
                       <label
                         htmlFor="userPassword_login"
                         className="mb-4 block text-[--c-text-yellow]"
@@ -149,22 +151,25 @@ export default function Login___Register() {
                           alt=""
                         />
                       )}
+<div className="mb-4 w-full h-max overflow-hidden">
 
                       <input
                       placeholder=""
-                        className="bg-[--input-bg] mb-4 w-full h-8 px-2"
+                        className="bg-[--input-bg]  w-full h-8 px-2"
                         type={img_inputPassword ? "password" : "text"}
                         name="userPassword_login"
                         id="userPassword_login"
                         value={formik.values.userPassword_login}
                         onChange={formik.handleChange}
                       />
+                        <span className="inp_anim"></span>
                       {formik.touched.userPassword_login &&
                         formik.errors.userPassword_login && (
                           <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                             {formik.errors.userPassword_login}
                           </span>
                         )}
+                        </div>
                     </div>
                   </div>
                   <div className="row-remember_forget flex justify-evenly items-center ">

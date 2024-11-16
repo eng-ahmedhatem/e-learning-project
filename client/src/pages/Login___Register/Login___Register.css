@@ -234,3 +234,56 @@ backdrop-filter: blur(20px);
     transform: translate(10px,-20px)
   }
 }
+
+input{
+  caret-color: var(--c-text-red);
+}
+
+
+
+
+.input-an  div  {
+  position: relative;
+}
+.input-an  div input:focus + .inp_anim  {
+  /* opacity: 1; */
+  visibility: visible;
+  transform: translateX(-100%);
+/* animation: an 1 5s linear; */
+}
+
+.input-an div .inp_anim  {
+  /* opacity: 0; */
+  transition: transform 1s ease-out;
+  position: absolute;
+  display: block;
+  visibility: hidden;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+  background-color: #ea8c344f;
+  z-index: 200;
+  width: 100%;
+  transform: translateX(100%);
+}
+
+
+@keyframes an {
+ to {
+ }
+}
+
+/* div :where(input[type="text"],input[type="password"]) {
+  position: relative;
+  border: 1px solid;
+}
+div :where(input[type="text"],input[type="password"])::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: red;
+  left: 0;
+  z-index: 200;
+} */

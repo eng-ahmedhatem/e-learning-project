@@ -61,97 +61,113 @@ function Register({ eventClick }) {
           </div>
           <form action="" className="pb-11 md:pb-0">
             <div className="row-fill w-full  mx-auto  grid   grid-cols-2  gap-5 justify-center items-center">
-              <div className="userName_reg w-full relative">
+              <div className="input-an userName_reg w-full relative">
                 <label
                   htmlFor="userName_reg"
                   className=" text-sm text-[--c-text-yellow] mb-4 block sm:text-base "
                 >
                   إسم المستخدم :
                 </label>
+                <div className="mb-4 w-full h-max overflow-hidden">
+
                 <input
                   type="text"
                   name="userName_reg"
                   id="userName_reg"
                   autoFocus
-                  className="bg-[--input-bg] h-8 mb-4 w-full px-2"
+                  className="bg-[--input-bg] h-8 w-full px-2"
                   value={formik.values.userName_reg}
                   onChange={formik.handleChange}
                 />
+                                        <span className="inp_anim"></span>
+
                 {(formik.touched.userName_reg || formik.isSubmitting) &&
                   formik.errors.userName_reg && (
                     <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                       {formik.errors.userName_reg}
                     </span>
                   )}
+                  </div>
               </div>
-              <div className="password_reg  w-full relative">
+              <div className="input-an  password_reg  w-full relative">
                 <label
                   htmlFor="password_reg"
                   className=" text-sm mb-4 block text-[--c-text-yellow] sm:text-base "
                 >
                   كلمة المرور :
                 </label>
+                <div className="mb-4 w-full h-max overflow-hidden">
 
                 <input
-                  className="bg-[--input-bg]  mb-4 w-full h-8 px-2"
+                  className="bg-[--input-bg]   w-full h-8 px-2"
                   type={"text"}
                   name="password_reg"
                   id="password_reg"
                   value={formik.values.password_reg}
                   onChange={formik.handleChange}
                 />
+                                        <span className="inp_anim"></span>
+
                 {(formik.touched.password_reg || formik.isSubmitting) &&
                   formik.errors.password_reg && (
                     <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                       {formik.errors.password_reg}
                     </span>
                   )}
+                  </div>
               </div>
-              <div className="password_reg_2 w-full relative">
+              <div className="input-an  password_reg_2 w-full relative">
                 <label
                   htmlFor="password_reg_2"
                   className=" text-sm mb-4 block text-[--c-text-yellow] sm:text-base "
                 >
                   اعد كتابة كلمة المرور :
                 </label>
+                <div className="mb-4 w-full h-max overflow-hidden">
                 <input
                   type="text"
                   name="password_reg_2"
                   id="password_reg_2"
                   autoFocus
-                  className="bg-[--input-bg] h-8 mb-4 w-full px-2"
+                  className="bg-[--input-bg] h-8  w-full px-2"
                   value={formik.values.password_reg_2}
                   onChange={formik.handleChange}
                 />
+                                        <span className="inp_anim"></span>
+
                 {(formik.touched.password_reg_2 || formik.isSubmitting) &&
                   formik.errors.password_reg_2 && (
                     <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                       {formik.errors.password_reg_2}
                     </span>
                   )}
+                  </div>
               </div>
-              <div className="email_reg  w-full relative">
+              <div className="input-an  email_reg  w-full relative">
                 <label
                   htmlFor="email_reg"
                   className=" text-sm mb-4 text-[--c-text-yellow] block sm:text-base "
                 >
                   البريد اللإلكتروني :
                 </label>
+                <div className="mb-4 w-full h-max overflow-hidden">
 
                 <input
-                  className="bg-[--input-bg] mb-4 w-full h-8 px-2"
+                  className="bg-[--input-bg] w-full h-8 px-2"
                   type={"text"}
                   name="email_reg"
                   id="email_reg"
                   value={formik.values.email_reg}
                   onChange={formik.handleChange}
                 />
+                <span className="inp_anim"></span>
                 {(formik.touched.email_reg || formik.isSubmitting) &&
                   formik.errors.email_reg && (
                     <span className="transition-all text-red-500 text-sm absolute -bottom-[25px] sm:-bottom-[6px] w-full right-0">
                       {formik.errors.email_reg}
                     </span>
                   )}
+                  </div>
               </div>
               <div className="date">
                 <div>

@@ -16,7 +16,10 @@ export default function Header() {
     },[])
   return (
     <header className='p-1'>
-        <h6 className='text-[12px] lg:text-base text-neutral-500 text-center text-[--]'>الكمبيوتر وتكنولوجيا المعلومات والإتصالات للصف الأول اللإعدادي</h6>
+        <div className="container mx-auto p-2">
+
+        <h6 className='text-[12px] lg:text-base text-neutral-300 text-center text-[--]'>الكمبيوتر وتكنولوجيا المعلومات والإتصالات للصف الأول اللإعدادي</h6>
+        </div>
         <div className="container  mx-auto flex justify-between items-center">
             <div className="links w-full lg:w-max relative flex  justify-between items-center ">
                 <div className="logo ml-4 w-20 h-20">

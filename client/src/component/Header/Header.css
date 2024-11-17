@@ -1,3 +1,10 @@
+header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 20;
+        width: 100%;
+}
 .toggle{
     position: relative;
     width: 70px;
@@ -102,9 +109,7 @@ nav.active {
 
 }
 }
-body {
-    background-color: #777;
-}
+
 .login_And_Register {
    
         -webkit-animation: heartbeat 1.5s ease-in-out infinite both;

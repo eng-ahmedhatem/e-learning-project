@@ -1,0 +1,183 @@
+.home {
+    border: 1px solid #000;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    /* background: url("./imgs/home/11.jpg") no-repeat;
+    background: url("./imgs/home/x.jpg") no-repeat;
+    background-size: cover; */
+    /* transform: scale(1.5); */
+    /* background-position: center; */
+}
+.home .slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+/* direction: ltr; */
+}
+.home .slider .items{
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 80%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+filter: grayscale(80%);
+    transition: 0.5s;
+
+}
+.home .slider .items:hover {
+    filter: grayscale(0%);
+}
+.home .slider .items .content {
+    z-index: 520;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.home .slider .items .content h1  {
+position: absolute;
+color: white ;
+background: rgba(10, 141, 189, 0.197);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(203, 7, 7, 0.1);
+backdrop-filter: blur(6.3px);
+user-select: none;
+-webkit-backdrop-filter: blur(6.3px);
+padding: 10px;
+width: 90%;
+left: 50%;
+transform: translateX(-50%);
+}
+.home .slider .items .content p {
+    display: none;
+}
+.home .slider {
+    overflow: hidden;
+}
+.home .slider .items:nth-child(1),.home .slider .items:nth-child(2){
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translate(0,0);
+    padding: 50px;
+    border-radius: 0;
+    filter: none;
+}
+    .home .slider .items:nth-child(2)::before { 
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.672);
+        z-index: 1;
+    }
+
+.home .slider .items:nth-child(1),.home .slider .items:nth-child(2) .content  {
+
+
+}
+.home .slider .items:nth-child(1) .content h1,.home .slider .items:nth-child(2) .content h1 {
+    margin-bottom: 50px;
+    background:none;
+    margin-left: 50px;
+    margin-right: 150px;
+border-radius: 0;
+box-shadow: none;
+backdrop-filter: none;
+-webkit-backdrop-filter: none;
+padding: 0;
+width: max-content;
+    font-size: 2.5rem;
+    inset: 0;
+    color: white; 
+position: relative;
+transform: translate(0);
+animation: hom-anim 1  1s 0.3s backwards  ease-in-out;
+
+}
+.home .slider .items:nth-child(1) .content h1::before,.home .slider .items:nth-child(2) .content h1::before {
+    content: "____";
+
+    position: absolute;
+    color: transparent;
+
+    display: inline-block;
+right: -30%;
+top: 50%;
+transform: translateY(-80%);
+    text-decoration: underline wavy white;
+
+
+    
+}
+.home .slider .items:nth-child(1) .content h1::after,.home .slider .items:nth-child(2) .content h1::after {
+    content: "____";
+
+    position: absolute;
+    color: transparent;
+
+    display: inline-block;
+left: -30%;
+top: 50%;
+transform: translateY(-80%);
+    text-decoration: underline wavy white;
+
+}
+
+.home .slider .items:nth-child(1) p,.home .slider .items:nth-child(2) p{
+display: block;
+    font-size: 1.1rem;
+    width: 50%;
+    line-height: 30px;
+    color: var(--c-text-blue);
+    animation: hom-anim 1  1s 1.3s backwards  ease-in-out;
+}
+.slider .items[data-type="tec-g"] .content p {
+    color: #23ff00;
+    
+}
+.slider .items[data-type="tec-g"] .content  h1::before  {
+text-decoration:wavy underline #23ff00 !important;    
+}
+.slider .items[data-type="tec-g"] .content h1::after  {
+text-decoration:wavy underline #23ff00  !important;    
+}
+.home .slider .items:nth-child(3){
+    border-radius: 20px;
+    left:calc(5% + 250px)
+}
+/* .home .slider .items:nth-child(4){
+    left: calc(35% + 550px);
+}  */
+.home .slider .items:nth-child(n + 4){
+    border-radius: 20px;
+    left: calc(5%  );
+ /* opacity: 0; */
+
+}
+
+@keyframes hom-anim {
+    from {
+
+        transform: translateY(100px);
+        opacity: 0;
+        filter: blur(20px);
+    }
+    to {
+
+        transform: translateY(0px);
+        opacity: 1;
+        filter: blur(0px);
+    }
+}

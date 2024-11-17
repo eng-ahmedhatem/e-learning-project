@@ -2,7 +2,7 @@ import { memo } from "react";
 import "./loader.css";
 function Loader() {
   return (
-    <div className="loader_content absolute flex flex-col justify-center items-center top-0 right-0">
+    <div className="loader_content z-50 absolute flex flex-col justify-center items-center top-0 right-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="200px"

@@ -1,0 +1,27 @@
+.map {
+    /* From https://css.glass */
+background: rgba(0, 0, 0, 0.07);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(18.9px);
+-webkit-backdrop-filter: blur(18.9px);
+border: 1px solid rgba(0, 0, 0, 0.01);
+}
+.header_sec_title  span::before
+{
+    padding: 20px;
+    content: "";
+    position: absolute;
+    top: 55%;
+    z-index: -1;
+    /* left: 38%; */
+    left: 100%;
+
+    transform: translate(-95%,-50%);
+    background-color: rgba(30, 255, 0, 0.839);
+    width: 120%;
+    border-radius: 20px 150px 150px ;
+
+    height: 60%;
+
+}

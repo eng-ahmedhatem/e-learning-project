@@ -4,12 +4,14 @@ header {
         right: 0;
         z-index: 20;
         width: 100%;
+        background-color: black;
+        overflow: hidden;
 }
 .toggle{
     position: relative;
     width: 70px;
     height: 70px;
-    background: #fff;
+    background: #000000;
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     border-radius: 10px;
     display: flex;
@@ -62,14 +64,20 @@ top: calc(100% + 20px );
     transform: translateX(60px);
 }
 
+
 @media (max-width:1024px) {
+
 header nav {
 /* From https://css.glass */
-background: rgba(255, 255, 255, 0);
+background: rgba(0, 0, 0, 0.458);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(17.6px);
 top: calc(100% + 20px );
+}
+header:has(div.toggle__container .toggle.active)  {
+        overflow: visible;
+
 }
 header div.toggle__container .toggle.active  {
     background: #fff;
@@ -102,6 +110,7 @@ nav {
     /* display: none; */
     transform: translateY(-50px);
     opacity: 0;
+    z-index: 200;
 }
 nav.active {
     transform: translateY(0);
@@ -197,3 +206,4 @@ nav.active {
     }
   }
   
+

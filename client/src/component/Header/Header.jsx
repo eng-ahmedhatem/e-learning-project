@@ -38,10 +38,11 @@ export default function Header() {
                 </div>
                 <nav className={`absolute  w-full transition lg:static ${isActive && "active"}`}>
                     <ul className='flex-col lg:flex-row  flex gap-1 justify-between items-center '>
-                        <li><a href="" className='p-5 block lg:px-2 xl:px-5 text-[#fff] hover:text-[--c-text-yellow] transition'>الرئيسية</a></li>
+                        <li><Link to="/" className='p-5 block lg:px-2 xl:px-5 text-[#fff] hover:text-[--c-text-yellow] transition'>الرئيسية</Link></li>
                         <li><a href="" className='p-5 block lg:px-2 xl:px-5 text-[#fff] hover:text-[--c-text-yellow] transition'>الأهداف العامه</a></li>
                         <li><a href="" className='p-5 block lg:px-2 xl:px-5 text-[#fff] hover:text-[--c-text-yellow] transition'>تعليمات</a></li>
-                        <li><a href="" className='p-5 block lg:px-2 xl:px-5 text-[#fff] hover:text-[--c-text-yellow] transition'>منتدى النقاش</a></li>
+                        <li><a href="" className='p-5 block lg:px-2 xl:px-5 text-[#fff] hover:text-[--c-text-yellow] transition'>تعليمات</a></li>
+                        <li><Link to="contact-us" className='p-5 block lg:px-2 xl:px-5 text-[#fff] hover:text-[--c-text-yellow] transition'>تواصل معنا</Link></li>
                         <li className="m-5 lg:hidden block login_And_Register scale-95 hover:scale-100 transition"><Link to={"/login-register"} className='bg-[--c-text-yellow] p-2 rounded-sm hover:bg-transparent border border-[--c-text-yellow] hover:text-[--c-text-yellow] transition '>تسجيل الدخول أو إنشاء حساب جديد</Link>                        </li>
                     </ul>
                 </nav>

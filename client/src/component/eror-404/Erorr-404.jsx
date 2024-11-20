@@ -5,8 +5,8 @@ export default function Erorr_404() {
 
   return (
     <div>
-      <div className="page_404">
-        <div className="container">
+      <div className="page_404 w-full h-screen">
+        <div className="container mx-auto ">
           <div className="text">
             <div className="four_zero_four_bg">
               <h1 className="text-center">404</h1>

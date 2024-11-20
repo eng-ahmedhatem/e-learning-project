@@ -40,7 +40,7 @@ export default function Header() {
                     <ul className='flex-col lg:flex-row  flex gap-1 justify-between items-center '>
                         <li><NavLink to="/" className={` p-5 block lg:px-2 xl:px-5 ${({isActive})=>isActive && "active"} text-[#000] hover:text-[--c-text-yellow] transition`} >الرئيسية</NavLink></li>
                         <li><NavLink to="/objectives" className={` p-5 block lg:px-2 xl:px-5 ${({isActive})=>isActive && "active"} text-[#000] hover:text-[--c-text-yellow] transition`}>الأهداف</NavLink></li>
-                        <li><NavLink to="/guide" className={` p-5 block lg:px-2 xl:px-5 ${({isActive})=>isActive && "active"} text-[#000] hover:text-[--c-text-yellow] transition`}>دليل المٌعلم</NavLink></li>
+                        <li><NavLink to="/guide" className={` p-5 block lg:px-2 xl:px-5 ${({isActive})=>isActive && "active"} text-[#000] hover:text-[--c-text-yellow] transition`}>دليل المٌعـــلم</NavLink></li>
                         <li><NavLink to="contact-us" className={` p-5 block lg:px-2 xl:px-5 ${({isActive})=>isActive && "active"} text-[#000] hover:text-[--c-text-yellow] transition`}>تواصل معنا</NavLink></li>
                         <li className="m-5 lg:hidden block login_And_Register scale-95 hover:scale-100 transition"><Link to={"/login-register"} className='bg-[--c-text-yellow] p-2 rounded-sm hover:bg-transparent border border-[--c-text-yellow] hover:text-[--c-text-yellow] transition '>تسجيل الدخول أو إنشاء حساب جديد</Link>                        </li>
                     </ul>

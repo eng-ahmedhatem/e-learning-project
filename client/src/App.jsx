@@ -13,9 +13,9 @@ const Login___Register = lazy(() =>
   import("./pages/Login___Register/Login___Register")
 );
 import Home from "./pages/home/Home";
-import Objectives from "./pages/Objectives/Objectives";
-import Guide from "./pages/guide/guide";
-// import { Login___Register } from "./pages";
+// const Home = lazy(()=> import("./pages/home/Home"))
+const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
+const Guide = lazy(() => import("./pages/guide/guide"));
 function App() {
   useEffect(() => {
     addEventListener("scroll", () => {
@@ -39,12 +39,13 @@ function App() {
       setIsloding(false);
     }, 2000);
   }, []);
+
   const RouterLayout = () => {
     return (
       <>
         <Header />
         <main className="bg-[var(--main-bg,rgb(186 193 195 / 71%))]">
-        <Outlet />
+          <Outlet />
         </main>
       </>
     );
@@ -52,28 +53,54 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+        <Route
+          path="/login-register"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Login___Register />
+            </Suspense>
+          }
+        />
+        <Route path="/" element={<RouterLayout />}>
+          <Route index element={<Home />} />
           <Route
-            path="/login-register"
+            path="/contact-us"
             element={
               <Suspense fallback={<Loader />}>
-                <Login___Register />
+                <Contact />
               </Suspense>
             }
           />
-        <Route path="/" element={<RouterLayout />}>
-            <Route index  element={<Home />} />
-            <Route path="/contact-us" element={<Contact />} />
-            <Route path="/guide" element={<Guide/>} />
-            <Route path="/objectives" element={<Objectives />} />
-        <Route path="*" element={<Erorr_404 />} />
+          <Route
+            path="/guide"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Guide />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/objectives"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Objectives />
+              </Suspense>
+            }
+          />
+          <Route path="*" element={<Erorr_404 />} />
         </Route>
       </>
     )
   );
 
-  return <>
-  <RouterProvider router={router}></RouterProvider>
-  </>;
+  if (isLoading) {
+    return <Loader />;
+  }
+  return (
+    <>
+      <RouterProvider router={router}></RouterProvider>
+    </>
+  );
 }
 
 export default App;

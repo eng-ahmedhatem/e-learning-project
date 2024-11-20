@@ -27,6 +27,8 @@ html {
   --c-text-red:#dc41539e;
   --c-text-blue:#0ca9be;
   --c-text-yellow:#ea8d34;
+  --main-bg: linear-gradient(176deg, rgba(226,226,226,1) 0%, rgba(189,217,217,1) 100%);
+  /* --main-bg:var(--main-bg,rgb(186 193 195 / 71%)); */
   --input-bg:#b5d8d653;
 
   --mainFont:"3asomy";
@@ -40,3 +42,6 @@ html {
 
  }
 
+body {
+  background:var(--main-bg,rgb(186 193 195 / 71%));
+}

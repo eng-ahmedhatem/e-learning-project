@@ -14,7 +14,7 @@ function Contact() {
         <p>لا تتردد في الاتصال بنا. قم بإرسال استفساراتك هنا وسنقوم بالرد عليك في أقرب وقت ممكن.</p>
       </div>
 
-      <div className="order-3 mt-5  lg:order-none grid grid-cols-1 text-center md:grid-cols-3 gap-8 w-full max-w-4xl mb-8">
+      <div className="order-3 mt-5  lg:order-none grid grid-cols-1  text-center md:grid-cols-3 gap-8 w-full max-w-4xl mb-8">
         <div className="bg-[#eef2fe] hover:bg-blue-700 hover:text-white transition rounded-lg shadow-md p-8">
           <a href="tel:+20111111111111">
             <FaPhoneAlt className="mx-auto text-5xl text-green-500 mb-4" />

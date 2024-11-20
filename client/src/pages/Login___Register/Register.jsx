@@ -81,13 +81,13 @@ function Register({ eventClick }) {
                 />
                                         <span className="inp_anim"></span>
 
+                  </div>
                 {(formik.touched.userName_reg || formik.isSubmitting) &&
                   formik.errors.userName_reg && (
                     <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                       {formik.errors.userName_reg}
                     </span>
                   )}
-                  </div>
               </div>
               <div className="input-an  password_reg  w-full relative">
                 <label
@@ -108,13 +108,13 @@ function Register({ eventClick }) {
                 />
                                         <span className="inp_anim"></span>
 
+                  </div>
                 {(formik.touched.password_reg || formik.isSubmitting) &&
                   formik.errors.password_reg && (
                     <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                       {formik.errors.password_reg}
                     </span>
                   )}
-                  </div>
               </div>
               <div className="input-an  password_reg_2 w-full relative">
                 <label
@@ -135,13 +135,13 @@ function Register({ eventClick }) {
                 />
                                         <span className="inp_anim"></span>
 
+                  </div>
                 {(formik.touched.password_reg_2 || formik.isSubmitting) &&
                   formik.errors.password_reg_2 && (
                     <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                       {formik.errors.password_reg_2}
                     </span>
                   )}
-                  </div>
               </div>
               <div className="input-an  email_reg  w-full relative">
                 <label
@@ -161,13 +161,13 @@ function Register({ eventClick }) {
                   onChange={formik.handleChange}
                 />
                 <span className="inp_anim"></span>
+                  </div>
                 {(formik.touched.email_reg || formik.isSubmitting) &&
                   formik.errors.email_reg && (
                     <span className="transition-all text-red-500 text-sm absolute -bottom-[25px] sm:-bottom-[6px] w-full right-0">
                       {formik.errors.email_reg}
                     </span>
                   )}
-                  </div>
               </div>
               <div className="date">
                 <div>

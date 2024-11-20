@@ -121,13 +121,13 @@ export default function Login___Register() {
                         onChange={formik.handleChange}
                       />
                       <span className="inp_anim"></span>
+</div>
                       {formik.touched.userName_login &&
                         formik.errors.userName_login && (
                           <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                             {formik.errors.userName_login}
                           </span>
                         )}
-</div>
                     </div>
                     <div className="input-an userPassword_login mb-8 w-full relative">
                       <label
@@ -151,7 +151,7 @@ export default function Login___Register() {
                           alt=""
                         />
                       )}
-<div className="mb-4 w-full h-max overflow-hidden">
+<div className="mb-4 w-full overflow-hidden h-max ">
 
                       <input
                       placeholder=""
@@ -162,14 +162,15 @@ export default function Login___Register() {
                         value={formik.values.userPassword_login}
                         onChange={formik.handleChange}
                       />
+                      
                         <span className="inp_anim"></span>
+                        </div>
                       {formik.touched.userPassword_login &&
                         formik.errors.userPassword_login && (
                           <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
                             {formik.errors.userPassword_login}
                           </span>
                         )}
-                        </div>
                     </div>
                   </div>
                   <div className="row-remember_forget flex justify-evenly items-center ">

@@ -1,5 +1,7 @@
 import Erorr_404 from "./component/eror-404/Erorr-404";
 import { lazy, Suspense, useEffect, useState } from "react";
+import "aos/dist/aos.css";
+import AOS from "aos"
 import {
   Route,
   createBrowserRouter,
@@ -17,6 +19,11 @@ import Home from "./pages/home/Home";
 const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Guide = lazy(() => import("./pages/guide/guide"));
 function App() {
+  useEffect(()=>{
+    AOS.init({
+      duration: 1000,
+    });
+  },[])
   useEffect(() => {
     addEventListener("scroll", () => {
       if (window.scrollY > 50) {

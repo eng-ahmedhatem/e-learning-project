@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(() => {
     const tt = setTimeout(() => {
       btn_atoCLick.current.click();
-    }, 50000);
+    }, 5000);
     return () => clearTimeout(tt);
   }, []);
   function handleArrowR() {
@@ -38,13 +38,20 @@ export default function Home() {
       <div className="container p-5 h-full mx-auto">
         <div className="slider relative">
           <div className="items  active place-items-center md:place-content-center md:place-items-stretch content-center grid grid-cols-1 justify-center items-center gap-5 w-full h-full lg:grid-cols-2">
-            <div className="cont-text flex flex-col justify-center ">
+            <div
+              data-aos="fade-up"
+              className="cont-text flex flex-col justify-center "
+            >
               <h1 className="flex justify-center  flex-nowrap   items-center text-center relative text-xl mx-auto  w-[80%] md:text-3xl  xl:text-5xl mb-7">
-                <div className="right-line"><span></span><span></span></div>
-                <span className="block grow">
-                التكنولوجيا الخضراء
-                </span>
-                <div className="left-line"><span></span><span></span></div>
+                <div className="right-line">
+                  <span></span>
+                  <span></span>
+                </div>
+                <span className="block grow">التكنولوجيا الخضراء</span>
+                <div className="left-line">
+                  <span></span>
+                  <span></span>
+                </div>
               </h1>
               <p className="text-slate-500 text-sm xl:text-lg text-justify">
                 وٌجِدَت التكنولوجيا الخضراء لهدفٍ نبيل وهو مساعدة البيئة قدر
@@ -54,7 +61,7 @@ export default function Home() {
                 المستقبلي وستغير منظور العالم حول حماية البيئة والحفاظ عليها.
               </p>
             </div>
-            <div className="img shadow-2xl row-start-1 md:row-start-auto w-full overflow-hidden">
+            <div  data-aos="fade-right" className="img shadow-2xl row-start-1 md:row-start-auto w-full overflow-hidden">
               <img
                 src="./imgs/home/1.webp"
                 className="w-full h-full rounded-lg"
@@ -64,15 +71,20 @@ export default function Home() {
           </div>
 
           <div className="items place-items-center md:place-content-center md:place-items-stretch content-center grid grid-cols-1 justify-center items-center gap-5 w-full h-full lg:grid-cols-2">
-            <div className="cont-text flex flex-col justify-center ">
+            <div
+              data-aos="fade-up"
+              className="cont-text flex flex-col justify-center "
+            >
               <h1 className="flex flex-nowrap   justify-center items-center text-center relative text-xl mx-auto  w-[80%] md:text-3xl  xl:text-5xl mb-7">
-              <div className="right-line"><span></span><span></span></div>
-<span className="block grow w-max">
-
-                التحول الرقمى
-</span>
-                <div className="left-line"><span></span><span></span></div>
-
+                <div className="right-line">
+                  <span></span>
+                  <span></span>
+                </div>
+                <span className="block grow w-max">التحول الرقمى</span>
+                <div className="left-line">
+                  <span></span>
+                  <span></span>
+                </div>
               </h1>
               <p className="text-slate-500 text-sm xl:text-lg  text-justify">
                 تسعى وزارة الاتصالات وتكنولوجيا المعلومات إلى بناء مصر الرقمية
@@ -84,7 +96,7 @@ export default function Home() {
                 القرار وإيجاد حلول للقضايا التي تهم المجتمع.
               </p>
             </div>
-            <div className="img shadow-2xl row-start-1 md:row-start-auto w-full overflow-hidden">
+            <div  data-aos="fade-right" className="img shadow-2xl row-start-1 md:row-start-auto w-full overflow-hidden">
               <img
                 src="./imgs/home/2.webp"
                 className="w-full h-full rounded-lg"
@@ -94,15 +106,20 @@ export default function Home() {
           </div>
 
           <div className="items place-items-center md:place-content-center md:place-items-stretch content-center grid grid-cols-1 justify-center items-center gap-5 w-full h-full lg:grid-cols-2">
-            <div className="relative cont-text flex flex-col justify-center ">
+            <div
+              data-aos="fade-up"
+              className="relative cont-text flex flex-col justify-center "
+            >
               <h1 className="flex flex-nowrap   justify-center items-center text-center relative text-xl mx-auto  w-[80%] md:text-3xl  xl:text-5xl mb-7">
-              <div className="right-line"><span></span><span></span></div>
-<span className="block grow w-max">
-
-                نظام التشغيل
-</span>
-                <div className="left-line"><span></span><span></span></div>
-
+                <div className="right-line">
+                  <span></span>
+                  <span></span>
+                </div>
+                <span className="block grow w-max">نظام التشغيل</span>
+                <div className="left-line">
+                  <span></span>
+                  <span></span>
+                </div>
               </h1>
               <p className="text-slate-500 text-sm xl:text-lg  text-justify">
                 نظام التشغيل هو البرنامج الأساسي أو النظام البرمجي الذي يدير
@@ -115,9 +132,8 @@ export default function Home() {
                 يوفر بيئات تشغيل متخصصة تساهم في تحسين أداء الأنظمة وتحقيق
                 الكفاءة العالية.
               </p>
-             
             </div>
-            <div className="img shadow-2xl row-start-1 md:row-start-auto w-full overflow-hidden">
+            <div  data-aos="fade-right" className="img shadow-2xl row-start-1 md:row-start-auto w-full overflow-hidden">
               <img
                 src="./imgs/home/3.webp"
                 className="w-full h-full rounded-lg"
@@ -126,7 +142,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="arrow absolute flex w-full justify-center  bottom-[100px] md:bottom-[50px] lg:bottom-[150px] left-2/4 -translate-x-[50%]">
+        <div  className="arrow absolute flex w-full justify-center  bottom-[100px] md:bottom-[50px] lg:bottom-[150px] left-2/4 -translate-x-[50%]">
           <IoIosArrowDropright
             onClick={handleArrowR}
             className="text-5xl text-black transition hover:text-[#777] cursor-pointer z-20 arrow_right"
@@ -135,8 +151,6 @@ export default function Home() {
             <IoIosArrowDropleft className="text-5xl transition hover:text-[#777] text-black cursor-pointer z-20 arrow_left" />
           </span>
         </div>
-
-
       </div>
       <div className="wave">
         <svg
@@ -155,18 +169,9 @@ export default function Home() {
             {" "}
             <linearGradient id="bg">
               {" "}
-              <stop
-                offset="0%"
-                style={{ stopColor: "#fff" }}
-              />{" "}
-              <stop
-                offset="50%"
-                style={{ stopColor: "#fff" }}
-              />{" "}
-              <stop
-                offset="100%"
-                style={{ stopColor: "#fff" }}
-              />{" "}
+              <stop offset="0%" style={{ stopColor: "#fff" }} />{" "}
+              <stop offset="50%" style={{ stopColor: "#fff" }} />{" "}
+              <stop offset="100%" style={{ stopColor: "#fff" }} />{" "}
             </linearGradient>{" "}
             <path
               id="wave"

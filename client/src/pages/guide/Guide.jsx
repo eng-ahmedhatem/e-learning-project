@@ -3,9 +3,9 @@ import React from 'react'
 export default function Guide() {
   return (
     <section
-    className='Guide'>
+    className='Guide p-2'>
      <div className="container pt-32  mx-auto ">
-        <div className="opj-card bg-white p-5">
+        <div data-aos="fade-up"  className="  opj-card bg-white p-5">
           <h2 className="opj-title w-max relative text-xl mb-9">
             دليل المٌعـــلم
           </h2>

@@ -2,14 +2,14 @@ import React from "react";
 import "./Objectives.css";
 export default function Objectives() {
   return (
-    <section className="Objectives h-screen ">
+    <section className="Objectives p-2 h-screen ">
       {/* <div className="header_sec_title relative header-cont mt-36  text-center">
         <h2 className="w-max relative mx-auto text-5xl font-bold mb-8">
           عنوان<span className="z-10 relative mr-5">الصفحة</span>
         </h2>
       </div> */}
       <div className="container pt-32  mx-auto ">
-        <div className="opj-card bg-white p-5">
+        <div data-aos="fade-up" className="opj-card bg-white p-5">
           <h2 className="opj-title w-max relative text-xl mb-9">
             الأهداف العامة للبرنامج
           </h2>

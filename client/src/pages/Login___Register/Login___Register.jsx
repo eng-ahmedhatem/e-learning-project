@@ -78,8 +78,8 @@ export default function Login___Register() {
         />
       )} */}
 
-      <div className="parent w-full h-screen flex justify-center items-center bg-[#bdd4da]">
-        <div
+      <div  className=" parent w-full h-screen flex justify-center items-center bg-[#bdd4da]">
+        <div 
           className={`relative parent-log_reg rounded-3xl  bg-[#c8d5d8] min-h-[75vh]  shadow-xl w-11/12 ${
             mode && "changeMode"
           }`}

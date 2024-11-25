@@ -1,7 +1,7 @@
 import Erorr_404 from "./component/eror-404/Erorr-404";
 import { lazy, Suspense, useEffect, useState } from "react";
 import "aos/dist/aos.css";
-import AOS from "aos"
+import AOS from "aos";
 import {
   Route,
   createBrowserRouter,
@@ -11,55 +11,62 @@ import {
 } from "react-router-dom";
 import { Header, Loader } from "./component";
 import Contact from "./pages/contact/Contact";
-const Login___Register = lazy(() =>
-  import("./pages/Login___Register/Login___Register")
-);
+const Login___Register = lazy(() => import("./pages/Login___Register/Login___Register"));
 import Home from "./pages/home/Home";
-// const Home = lazy(()=> import("./pages/home/Home"))
+import Dashboard_layout from "./pages/dashboard/Dashboard_layout";
+import Home_dash from "./pages/dashboard/Home_dash";
 const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Guide = lazy(() => import("./pages/guide/guide"));
+
 function App() {
-  useEffect(()=>{
+  useEffect(() => {
     AOS.init({
       duration: 1000,
     });
-  },[])
+  }, []);
+
   useEffect(() => {
-    addEventListener("scroll", () => {
+    const onScroll = () => {
       if (window.scrollY > 50) {
         document.querySelector("header").classList.add("scroll");
         document.getElementById("main-title").style.color = "#333";
       } else {
         document.querySelector("header").classList.remove("scroll");
         document.getElementById("main-title").style.color = "#999";
-      } // Add or remove the class "fixed" to the header when scrolling
-    });
+      }
+    };
+
+    addEventListener("scroll", onScroll);
     return () => {
-      removeEventListener("scroll", () => {
-        document.querySelector("header").classList.remove("scroll");
-      });
+      removeEventListener("scroll", onScroll);
     };
   }, []);
-  const [isLoading, setIsloding] = useState(true);
+
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    const tt = setTimeout(() => {
-      setIsloding(false);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
     }, 2000);
+    return () => clearTimeout(timer);
   }, []);
 
-  const RouterLayout = () => {
-    return (
-      <>
-        <Header />
-        <main className="bg-[var(--main-bg,rgb(186 193 195 / 71%))]">
-          <Outlet />
-        </main>
-      </>
-    );
-  };
+  const RouterLayout = () => (
+    <>
+      <Header />
+      <main className="bg-[var(--main-bg,rgb(186 193 195 / 71%))]">
+        <Outlet />
+      </main>
+    </>
+  );
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+        <Route path="/dashboard" element={<Dashboard_layout />}>
+          <Route path="home" element={<Home_dash/>} />
+          <Route path="info" element={<h1>info</h1>} />
+          <Route path="exam" element={<h1>exam</h1>} />
+        </Route>
         <Route
           path="/login-register"
           element={
@@ -103,11 +110,7 @@ function App() {
   if (isLoading) {
     return <Loader />;
   }
-  return (
-    <>
-      <RouterProvider router={router}></RouterProvider>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

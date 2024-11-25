@@ -28,9 +28,9 @@ export const register = async (req, res, next) => {
         }
         delete userData.password;
 
-        res.status(201).json({
+        res.cookie('access_token',token, {httpOnly:true}).status(201).json({
             success: true,
-            token,
+            
             data: userData
         });
     } catch (err) {

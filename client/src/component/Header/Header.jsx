@@ -50,6 +50,10 @@ export default function Header() {
                 <Link to={"/login-register"} className='bg-[--c-text-yellow] p-2 rounded-sm hover:bg-transparent border border-[--c-text-yellow] hover:text-[--c-text-yellow] transition '>تسجيل الدخول أو إنشاء حساب جديد</Link>
             </div>
             
+            <div className="hidden lg:block hover:animate-none login_And_Register scale-95 hover:scale-100 transition">
+                <Link to={"/dashboard/home"} className='bg-blue-500 p-2 rounded-sm hover:bg-transparent border hover:border-blue-500 hover:text-blue-500 transition '>الذهاب الى لوحة التحم</Link>
+            </div>
+            
         </div>
     </header>
   )

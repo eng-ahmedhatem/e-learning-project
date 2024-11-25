@@ -5,9 +5,9 @@ const lessonSchema = mongoose.Schema({
     title:String,
     objectives:[String],
     videoLink:String,
-    activities:[String],
     links:[String],
-    test:{type:mongoose.Schema.Types.ObjectId,ref:"Exam"}
+    test:{type:mongoose.Schema.Types.ObjectId,ref:"Exam"},
+    text_content:String
 })
 
 const Lesson = mongoose.model("Lesson", lessonSchema)

@@ -2,6 +2,7 @@ import Erorr_404 from "./component/eror-404/Erorr-404";
 import { lazy, Suspense, useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
+
 import {
   Route,
   createBrowserRouter,
@@ -9,16 +10,22 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
+import { persistor, store } from './store'
+import { Provider } from 'react-redux'
 import { Header, Loader } from "./component";
 import Contact from "./pages/contact/Contact";
 const Login___Register = lazy(() => import("./pages/Login___Register/Login___Register"));
 import Home from "./pages/home/Home";
-import Dashboard_layout from "./pages/dashboard/Dashboard_layout";
 import Home_dash from "./pages/dashboard/Home_dash";
+import axios from "axios";
+import Protect from "./Protect";
+import { PersistGate } from "redux-persist/lib/integration/react";
+const Dashboard_layout = lazy(()=> import("./pages/dashboard/Dashboard_layout"))
 const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Guide = lazy(() => import("./pages/guide/guide"));
 
 function App() {
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -62,7 +69,13 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/dashboard" element={<Dashboard_layout />}>
+        <Route path="/dashboard" element={<Protect>
+          <Suspense fallback={<Loader />}>
+
+          <Dashboard_layout />
+          </Suspense>
+          
+          </Protect>}>
           <Route path="home" element={<Home_dash/>} />
           <Route path="info" element={<h1>info</h1>} />
           <Route path="exam" element={<h1>exam</h1>} />
@@ -71,6 +84,7 @@ function App() {
           path="/login-register"
           element={
             <Suspense fallback={<Loader />}>
+              
               <Login___Register />
             </Suspense>
           }
@@ -110,7 +124,12 @@ function App() {
   if (isLoading) {
     return <Loader />;
   }
-  return <RouterProvider router={router} />;
+  return <Provider  store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+
+    <RouterProvider future={{ v7_startTransition: true }} router={router} />
+    </PersistGate>
+  </Provider>;
 }
 
 export default App;

@@ -1,9 +1,15 @@
 import React, { memo } from 'react'
 import { FaSignOutAlt } from "react-icons/fa";
-
+import { signOut } from '../../slice/userSlice';
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 
 function Dashboard_header() {
+    const dispatch = useDispatch()
+    function handelLogout() {
+        dispatch(signOut())
+        
+    }
     return (
         <div className='dsh-header flex justify-between items-center p-2   rounded-[0px]'>
             <div className="h-right  flex items-center">
@@ -15,7 +21,7 @@ function Dashboard_header() {
             </div>
             </div>
             <div className="  scale-95 hover:scale-100 transition">
-                <button className='bg-red-500 p-2 flex justify-center items-center rounded-full  md:rounded-sm hover:bg-transparent text-gray-100 border hover:border-red-500 hover:text-red-500  transition '>
+                <button onClick={()=> handelLogout()} className='bg-red-500 p-2 flex justify-center items-center rounded-full  md:rounded-sm hover:bg-transparent text-gray-100 border hover:border-red-500 hover:text-red-500  transition '>
                  <span className='hidden  md:block'>
                  تسجيل الخروج
 

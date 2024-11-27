@@ -1,5 +1,14 @@
-import { Link } from "react-router-dom";
-import { memo } from "react";
+import axios from "axios";
+import {
+  user_isLoaning,
+  user_notLoaning,
+  user_isLogin,
+  user_data,
+  user_error
+} from "../../slice/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { memo, useEffect } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaHome } from "react-icons/fa";
@@ -14,6 +23,11 @@ import "./Register.css";
 registerLocale("ar", ar);
 
 function Register({ eventClick }) {
+  const isLoading = useSelector(state => state.user.isLoading);
+
+  const navigate = useNavigate(null);
+  const dispatch = useDispatch();
+
   const validationSchema = Yup.object({
     userName_reg: Yup.string()
       .required("هذا الحقل مطلوب")
@@ -22,22 +36,52 @@ function Register({ eventClick }) {
       .email("هذا البريد الإلكتروني غير صالح")
       .required("حقل البريد الإلكتروني مطلوب"),
     password_reg: Yup.string().required("هذا الحقل مطلوب"),
-    password_reg_2: Yup.string().required("هذا الحقل مطلوب"),
-    date_reg: Yup.date().required("هذا الحقل مطلوب"),
+    // password_reg_2: Yup.string().required("هذا الحقل مطلوب"),
+    date_reg: Yup.date().required("هذا الحقل مطلوب")
   });
+  function handelNew_user(values) {
+    const theGroup = ["control", "ex"];
+    const random = Math.ceil(Math.random() * 2) - 1;
+    dispatch(user_isLoaning());
+
+    console.log(random);
+    const jsonData = JSON.stringify({
+      userName: values.userName_reg,
+      email: values.email_reg,
+      password: values.password_reg,
+      role: "student",
+      group: theGroup[random],
+      date: values.date_reg.toISOString().split("T")[0]
+    }); // تعيين الرؤوس لتحديد نوع المحتوى
+    console.log(jsonData)
+    axios
+      .post("/api/auth/register", jsonData)
+      .then(response => {
+        dispatch(user_isLogin());
+        dispatch(user_notLoaning());
+        dispatch(user_data(response.data));
+        navigate("/dashboard/home");
+      })
+      .catch(error => {
+        console.log(error);
+        dispatch(user_error(error.response.data.message));
+        setTimeout(() => {
+          dispatch(user_error(null));
+        }, 5000);
+      });
+  }
   const formik = useFormik({
     initialValues: {
       userName_reg: "",
       email_reg: "",
       password_reg: "",
-      password_reg_2: "",
-      date_reg: null,
+      // password_reg_2: "",
+      date_reg: null
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
+    onSubmit: values => handelNew_user(values)
   });
+
   return (
     <div className="face face-2 overflow-y-auto  w-full min-h-[75vh] ">
       <div className=" parent-tow-cont  flex h-[75vh] content-sign-up">
@@ -69,25 +113,22 @@ function Register({ eventClick }) {
                   إسم المستخدم :
                 </label>
                 <div className="mb-4 w-full h-max overflow-hidden">
-
-                <input
-                  type="text"
-                  name="userName_reg"
-                  id="userName_reg"
-                  autoFocus
-                  className="bg-[--input-bg] h-8 w-full px-2"
-                  value={formik.values.userName_reg}
-                  onChange={formik.handleChange}
-                />
-                                        <span className="inp_anim"></span>
-
-                  </div>
+                  <input
+                    type="text"
+                    name="userName_reg"
+                    id="userName_reg"
+                    autoFocus
+                    className="bg-[--input-bg] h-8 w-full px-2"
+                    value={formik.values.userName_reg}
+                    onChange={formik.handleChange}
+                  />
+                  <span className="inp_anim" />
+                </div>
                 {(formik.touched.userName_reg || formik.isSubmitting) &&
-                  formik.errors.userName_reg && (
-                    <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
-                      {formik.errors.userName_reg}
-                    </span>
-                  )}
+                  formik.errors.userName_reg &&
+                  <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
+                    {formik.errors.userName_reg}
+                  </span>}
               </div>
               <div className="input-an  password_reg  w-full relative">
                 <label
@@ -97,26 +138,23 @@ function Register({ eventClick }) {
                   كلمة المرور :
                 </label>
                 <div className="mb-4 w-full h-max overflow-hidden">
-
-                <input
-                  className="bg-[--input-bg]   w-full h-8 px-2"
-                  type={"text"}
-                  name="password_reg"
-                  id="password_reg"
-                  value={formik.values.password_reg}
-                  onChange={formik.handleChange}
-                />
-                                        <span className="inp_anim"></span>
-
-                  </div>
+                  <input
+                    className="bg-[--input-bg]   w-full h-8 px-2"
+                    type={"text"}
+                    name="password_reg"
+                    id="password_reg"
+                    value={formik.values.password_reg}
+                    onChange={formik.handleChange}
+                  />
+                  <span className="inp_anim" />
+                </div>
                 {(formik.touched.password_reg || formik.isSubmitting) &&
-                  formik.errors.password_reg && (
-                    <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
-                      {formik.errors.password_reg}
-                    </span>
-                  )}
+                  formik.errors.password_reg &&
+                  <span className="text-red-500 text-sm absolute -bottom-[6px] w-full right-0">
+                    {formik.errors.password_reg}
+                  </span>}
               </div>
-              <div className="input-an  password_reg_2 w-full relative">
+              {/* <div className="input-an  password_reg_2 w-full relative">
                 <label
                   htmlFor="password_reg_2"
                   className=" text-sm mb-4 block text-[--c-text-yellow] sm:text-base "
@@ -142,7 +180,8 @@ function Register({ eventClick }) {
                       {formik.errors.password_reg_2}
                     </span>
                   )}
-              </div>
+              </div> */}
+
               <div className="input-an  email_reg  w-full relative">
                 <label
                   htmlFor="email_reg"
@@ -151,24 +190,23 @@ function Register({ eventClick }) {
                   البريد اللإلكتروني :
                 </label>
                 <div className="mb-4 w-full h-max overflow-hidden">
-
-                <input
-                  className="bg-[--input-bg] w-full h-8 px-2"
-                  type={"text"}
-                  name="email_reg"
-                  id="email_reg"
-                  value={formik.values.email_reg}
-                  onChange={formik.handleChange}
-                />
-                <span className="inp_anim"></span>
-                  </div>
+                  <input
+                    className="bg-[--input-bg] w-full h-8 px-2"
+                    type={"text"}
+                    name="email_reg"
+                    id="email_reg"
+                    value={formik.values.email_reg}
+                    onChange={formik.handleChange}
+                  />
+                  <span className="inp_anim" />
+                </div>
                 {(formik.touched.email_reg || formik.isSubmitting) &&
-                  formik.errors.email_reg && (
-                    <span className="transition-all text-red-500 text-sm absolute -bottom-[25px] sm:-bottom-[6px] w-full right-0">
-                      {formik.errors.email_reg}
-                    </span>
-                  )}
+                  formik.errors.email_reg &&
+                  <span className="transition-all text-red-500 text-sm absolute -bottom-[25px] sm:-bottom-[6px] w-full right-0">
+                    {formik.errors.email_reg}
+                  </span>}
               </div>
+              <br />
               <div className="date">
                 <div>
                   <label
@@ -187,9 +225,7 @@ function Register({ eventClick }) {
                     <DatePicker
                       value={formik.values.date_reg}
                       selected={formik.values.date_reg}
-                      onChange={(date) =>
-                        formik.setFieldValue("date_reg", date)
-                      }
+                      onChange={date => formik.setFieldValue("date_reg", date)}
                       locale="ar"
                       dateFormat="dd-MM-yyyy"
                       className=" bg-white border border-gray-300 text-[--btn-bg] font-[--mainFont] text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-8 md:ps-12 p-3"
@@ -199,42 +235,43 @@ function Register({ eventClick }) {
                       name="date_reg"
                     />
                     {(formik.touched.date_reg || formik.isSubmitting) &&
-                      formik.errors.date_reg && (
-                        <span className="transition-all text-red-500 text-sm absolute -bottom-[25px] md:-bottom-[25px] w-full right-0">
-                          {formik.errors.date_reg}
-                        </span>
-                      )}
+                      formik.errors.date_reg &&
+                      <span className="transition-all text-red-500 text-sm absolute -bottom-[25px] md:-bottom-[25px] w-full right-0">
+                        {formik.errors.date_reg}
+                      </span>}
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="row_buttons mt-8 lg:mt-4 2xl:mt-10 w-10/12 mx-auto flex  justify-center gap-4 ">
-            <div  onClick={(e)=>formik.handleSubmit(e)} className="bg-[--btn-bg] flex scale-95 hover:scale-105 justify-center items-center h-[40px]  border border-[--btn-bg]  hover:bg-[transparent] transition cursor-pointer hover:text-[--btn-bg]  basis-2/4 rounded-[5px] text-[#FFF7D1]"            >
-            <span className="text-2xl ml-4 block ">
-                  <TiUserAdd  />
-                  </span> 
-              <input
-                type="submit"
-                name="send"
-                value=" إنشاء حساب"
-                className="cursor-pointer"
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              />
-            </div>
-            <div  onClick={eventClick}  className=" scale-95 hover:scale-105 newUser_btn flex justify-center cursor-pointer animate-none vibrate-1 items-center h-[40px]  border border-[--btn-bg] hover:bg-[--btn-bg] hover:text-[#FFF7D1] text-[--btn-bg] transition  basis-2/4 rounded-[5px] "            >
-            <span className="text-2xl ml-4 block"> 
-                  <LuLogIn />
-
-                  </span>
-              <button
-                
+            <div className="row_buttons mt-8 lg:mt-4 2xl:mt-10 w-full lg:w-10/12 mx-auto flex  justify-center gap-4 ">
+              <div
+                onClick={formik.handleSubmit}
+                className={` ${isLoading && "pointer-events-none opacity-[.90]"} bg-[--btn-bg] flex scale-95 hover:scale-105 justify-center items-center h-[40px]  border border-[--btn-bg]  hover:bg-[transparent] transition cursor-pointer hover:text-[--btn-bg]  basis-2/4 rounded-[5px] text-[#FFF7D1]`}
               >
-                تسجيل الدخول
-              </button>
-            </div>
+                {isLoading
+                  ? <div className="animate-spin rounded-full h-[30px] w-[30px] border-t-2 border-b-2 border-[#ffffff]" />
+                  : <div className="flex justify-center items-center">
+                      <span className="text-2xl ml-4 block ">
+                        <TiUserAdd />
+                      </span>
+                      <input
+                        type="submit"
+                        name="send"
+                        value=" إنشاء حساب"
+                        className="cursor-pointer"
+                      />
+                    </div>}
+              </div>
+              <div
+                onClick={eventClick}
+                className=" scale-95 hover:scale-105 newUser_btn flex justify-center cursor-pointer animate-none vibrate-1 items-center h-[40px]  border border-[--btn-bg] hover:bg-[--btn-bg] hover:text-[#FFF7D1] text-[--btn-bg] transition  basis-2/4 rounded-[5px] "
+              >
+                <span className="text-2xl ml-4 block">
+                  <LuLogIn />
+                </span>
+                <button>تسجيل الدخول</button>
+              </div>
             </div>
           </form>
         </div>

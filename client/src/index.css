@@ -52,17 +52,19 @@ body {
 .opj-title::before {
   content: "";
   position: absolute;
-  top: -5px;
+  top: -1px;
   right: -5px;
   z-index: -1;
   width: 50px;
+  animation: 5s width-80 infinite alternate linear ;
   height: 40px;
   border-radius: 100px 20px;
   background-color: #e99141;
-  transition: 0.3s;
+  transition: .3s;
 }
 .opj-title:hover::before {
   width: 110%;
+  animation-play-state: paused;
 }
 .opj-title {
   z-index: 1;
@@ -133,8 +135,50 @@ body {
   /* section opjectives and guide  */
 }
 
+[data-status="unDone"]::before {
+  content: "غير مكتمل";
+  position: absolute;
+  top: 5%;
+  background-color: #777;
+  padding: 5px 10px;
+  z-index: 20;
+  color: #fff;
+  border-radius: 15px;
+  right: 1%;
+  
 
+}
+[data-status="done"]::before {
+  content: "مكتمل";
+  position: absolute;
+  top: 5%;
+  background-color: green;
+  padding: 5px 10px;
+  z-index: 20;
+  color: #fff;
+  border-radius: 15px;
+  right: 1%;
+  
+}
 
+.card:has(.card-content[data-status="done"]) {
+  opacity: .5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.card-effect {
+  background-image: linear-gradient(to left bottom, #ea8d34, #e1a415, #cdbc00, #aed400, #7cea34);
+  
+}
+.card-effect:hover .card-content {
+  transform: scaleY(.97) scaleX(.99);
+}
+
+@keyframes width-80 {
+  to {
+    width: 80%;
+  }
+}
 
 @-webkit-keyframes wobble-ver-right {
   0%,

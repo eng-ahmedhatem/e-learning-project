@@ -9,7 +9,7 @@ import token_auth from "./middleware/token_auth.js";
 import Lesson from "./models/lesson.module.js";
 const app = express()
 app.use(express.json())
-app.use("/auth", router)
+app.use("/api/auth", router)
 app.use("/api", token_auth)
 app.use("/api", exams_router)
 dotenv.config()

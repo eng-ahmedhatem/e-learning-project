@@ -16,11 +16,11 @@
   src: url("/fonts/DG 3asomy Regular.ttf");
   font-display: swap;
 }
-/* @font-face {
+@font-face {
   font-family: jooza;
   src: url("./fonts/flat-jooza-regular.ttf");
   font-display: swap;
-} */
+}
 
 html {
   --btn-bg:#569d6d;
@@ -43,6 +43,8 @@ html {
  }
 
 body {
+  
+  background:#ecf0f4;
   background:var(--main-bg,rgb(186 193 195 / 71%));
 }
 

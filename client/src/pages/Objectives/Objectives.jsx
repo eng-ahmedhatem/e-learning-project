@@ -2,7 +2,7 @@ import React from "react";
 import "./Objectives.css";
 export default function Objectives() {
   return (
-    <section className="Objectives p-2 h-screen ">
+    <section style={{backgroundColor:"var(--main-bg,rgb(186 193 195 / 71%))"}} className="Objectives p-2 h-screen ">
       {/* <div className="header_sec_title relative header-cont mt-36  text-center">
         <h2 className="w-max relative mx-auto text-5xl font-bold mb-8">
           عنوان<span className="z-10 relative mr-5">الصفحة</span>

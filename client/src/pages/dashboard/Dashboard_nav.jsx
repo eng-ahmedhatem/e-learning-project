@@ -9,7 +9,7 @@ function Dashboard_nav({userName}) {
     <div className="dsh-nav bg-white rounded-[0px]  overflow-hidden text-center ">
       <div className="hidden md:block nav-top">
         <h2 className="p-5 text-xl mt-2 ">
-          مرحباً بك يا <span className="text-[--c-text-yellow]">{userName && userName.split(" ")[0]}</span>
+          مرحباً يا <span className="text-[--c-text-yellow]">{userName && userName.split(" ")[0]}</span>
         </h2>
         <span className="block w-2/4 h-[2px] bg-[#777] mx-auto" />
       </div>

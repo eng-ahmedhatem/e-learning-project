@@ -2,6 +2,8 @@
   border: 1px solid #000;
   width: 100vw;
   height: 100vh;
+  background:var(--main-bg,rgb(186 193 195 / 71%));
+
   height: 100svh;
   overflow: hidden;
   /* background: url("./imgs/home/11.jpg") no-repeat;

@@ -7,9 +7,11 @@ const users_Schema = new mongoose.Schema({
     role: { type: String, enum: ["admin", "student"], default: "user" },
     group: { type: String, enum: ["control", "ex"], required: function () { return this.role == "student" } },
     date: Date,
-    preTest_Score: { type: String, default: "0", required: function () { return this.role == "student" } },
+    preTest_Score: { type: Number, default: 0, required: function () { return this.role == "student" } },
+    postTest_Score: { type: Number, default: 0, required: function () { return this.role == "student" } },
+    preTest_Status: { type: Boolean, default: false, required: function () { return this.role == "student" } },
+    postTest_Status: { type: Boolean, default: false, required: function () { return this.role == "student" } },
     pre_scale: { type: Boolean, default: false, required: function () { return this.role == "student" } },
-    postTest_Score: { type: String, default: "0", required: function () { return this.role == "student" } },
     post_scale: { type: Boolean, default: false, required: function () { return this.role == "student" } }
 });
 

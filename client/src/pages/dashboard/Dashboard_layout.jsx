@@ -13,7 +13,7 @@ export default function Dashboard_layout() {
     <section className='dashboard bg-[#ecf0f4]  pb-0 grid h-svh '>
         <Dashboard_header/>
         <Dashboard_nav userName={data && data.userName}/>
-        <div className="dash-content p-5 rounded-md ">
+        <div className="dash-content relative p-5 rounded-md ">
             <Outlet/>
         </div>
     </section>

@@ -29,7 +29,7 @@ export default function Header() {
         <div className="links w-full lg:w-max relative flex  justify-between items-center ">
           <div className="logo ml-4 w-20 h-20">
             <a href="https://moe.gov.eg/">
-              <img src="./imgs/header/وزارة التربية والتعليم.svg" alt="Logo" />
+              <img src="/imgs/header/وزارة التربية والتعليم.svg" alt="Logo" />
             </a>
           </div>
           <div className="toggle__container relative w-max h-max">

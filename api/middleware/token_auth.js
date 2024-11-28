@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken"
 const token_auth = (req, res, next) => {
-
-    const token = req.headers["authorization"];
+    const token = req.cookies.access_token || req.headers["authorization"];
     if (!token) {
         res.status(404).json({ message: "Invalid token" })
         return

@@ -21,6 +21,7 @@ import axios from "axios";
 import Protect from "./Protect";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import Info from "./pages/dashboard/info/Info";
+import Exam_dash from "./pages/dashboard/exam/Exam_dash";
 const Dashboard_layout = lazy(()=> import("./pages/dashboard/Dashboard_layout"))
 const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Guide = lazy(() => import("./pages/guide/guide"));
@@ -79,7 +80,7 @@ function App() {
           </Protect>}>
           <Route path="home" element={<Home_dash/>} />
           <Route path="info" element={<Info/>} />
-          <Route path="exam" element={<h1>exam</h1>} />
+          <Route path="exam" element={<Exam_dash/>} />
         </Route>
         <Route
           path="/login-register"

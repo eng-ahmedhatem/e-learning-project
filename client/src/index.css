@@ -3,12 +3,12 @@
 @tailwind utilities;
 @font-face {
   font-family: radyPro;
-  src: url("./fonts/Abd ElRady Pro Regular.otf");
+  src: url("/fonts/Abd ElRady Pro Regular.otf");
   font-display: swap;
 }
 @font-face {
   font-family: cocon;
-  src: url("./fonts/cocon-next-arabic.ttf");
+  src: url("/fonts/cocon-next-arabic.ttf");
   font-display: swap;
 }
 @font-face {
@@ -18,7 +18,7 @@
 }
 @font-face {
   font-family: jooza;
-  src: url("./fonts/flat-jooza-regular.ttf");
+  src: url("/fonts/flat-jooza-regular.ttf");
   font-display: swap;
 }
 
@@ -32,10 +32,11 @@ html {
   --input-bg:#b5d8d653;
 
   --mainFont:"3asomy";
-  font-family: "3asomy";
+  --secondFont:"jooza";
+  font-family: var(--mainFont);
   direction: rtl;
 }
- *{
+*{
   padding: 0;
   margin: 0%;
   /* box-sizing: border-box;  */
@@ -45,11 +46,18 @@ html {
 body {
   
   background:#ecf0f4;
-  background:var(--main-bg,rgb(186 193 195 / 71%));
+  background:var(--main-bg,rgb(186 193 195 / 71%)) no-repeat;
 }
 
 /* section opjectives and guide  */
 
+.Aleart_exam{
+background: rgba(97, 97, 97, 0.048);
+box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.363);
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 20px );
+
+}
 
 .opj-title::before {
   content: "";
@@ -176,6 +184,22 @@ body {
   transform: scaleY(.97) scaleX(.99);
 }
 
+
+
+@keyframes slide-in-fwd-center {
+  0% {
+    transform: translateZ(-50%, -50%,-1400px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(-50%, -50%,0);
+    opacity: 1;
+  }
+}
+.slide-in-fwd-center {
+	animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 @keyframes width-80 {
   to {
     width: 80%;
@@ -214,8 +238,8 @@ body {
 @keyframes wobble-ver-right {
   0%,
   100% {
-    -webkit-transform: translateY(0) rotate(0);
-            transform: translateY(0) rotate(0);
+    -webkit-transform: translateY(50%) translateX(50%) rotate(0);
+            transform: translateY(50%) translateX(50%) rotate(0);
     -webkit-transform-origin: 50% 50%;
             transform-origin: 50% 50%;
   }

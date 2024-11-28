@@ -64,8 +64,9 @@ export default function Info() {
             <h2 className="text-base lg:text-xl mb-2">
               نتيجة الإختبار المبدئي
             </h2>
-            <p className="text-3xl text-[--c-text-blue]">
-              {userData.preTest_Score}
+            <p className="text-3xl ">
+              <span className="text-[--c-text-blue]">{userData.preTest_Score.toString()}</span> \
+              <span> 40 </span>
             </p>
           </div>
           <div className=" rounded-lg bg-[#ecf0f4] p-5">
@@ -73,7 +74,7 @@ export default function Info() {
               نتيجة الإختبار النهائي
             </h2>
             <p className="text-3xl text-[--c-text-blue]">
-              {userData.postTest_Score}
+              {userData.postTest_Score.toString()}
             </p>
           </div>
         </div>

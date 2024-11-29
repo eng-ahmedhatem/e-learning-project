@@ -7,6 +7,8 @@ import axios from "axios";
 export default function Home_dash() {
   const [show_exPre_Alert, set_showAlert_exPre] = useState(false);
   const [show_exPost_Alert, set_showAlert_exPost] = useState(false);
+  const [show_PreScale_Alert, set_showAlert_preScale] = useState(false);
+  const [show_postScale_Alert, set_showAlert_postScale] = useState(false);
   const navigate = useNavigate();
   const [pre_And_post_exam_q, set_pre_And_post_exam_q] = useState([]);
 
@@ -30,7 +32,12 @@ export default function Home_dash() {
   function handelExam_card(type) {
     if (type === "preTest") {
       set_showAlert_exPre(!show_exPre_Alert);
-    } else {
+    }else if (type == "preScale"){
+      set_showAlert_preScale(!show_PreScale_Alert);
+    }else if (type == "postScale"){
+      set_showAlert_postScale(!show_postScale_Alert);
+    }
+     else {
       set_showAlert_exPost(!show_exPost_Alert);
     }
   }
@@ -38,7 +45,7 @@ export default function Home_dash() {
   return (
     <div>
       {show_exPre_Alert &&
-        <Aleart_exam
+        <Aleart_exam title={"تعليمات الإختبار"} btn_t={'الذهاب إلى الإختبار'}
           goExam={() => {
             if (userData) {
               if (userData.preTest_Status) return;
@@ -53,9 +60,13 @@ export default function Home_dash() {
             }
           }}
           AlertStatus={[show_exPre_Alert, set_showAlert_exPre]}
-        />}
+        >
+          
+          <li>.أبجد هوز حطى كلمن هوى ، التوازن ، الاحتياجات</li>
+          
+          </Aleart_exam>}
       {show_exPost_Alert &&
-        <Aleart_exam
+        <Aleart_exam title={"تعليمات الإختبار"} btn_t={'الذهاب إلى الإختبار'}
           goExam={() => {
             if (userData) {
               if (userData.postTest_Status) return;
@@ -70,7 +81,51 @@ export default function Home_dash() {
             }
           }}
           AlertStatus={[show_exPost_Alert, set_showAlert_exPost]}
-        />}
+        >
+          
+          <li>.أبجد هوز حطى كلمن هوى ، التوازن ، الاحتياجات</li>
+          
+          </Aleart_exam>}
+      {show_PreScale_Alert &&
+        <Aleart_exam title={"تعليمات المقياس"} btn_t={'الذهاب إلى المقياس المبدئي'}
+          goExam={() => {
+            if (userData) {
+              if (userData.pre_scale) return;
+              navigate("/dashboard/scale", {
+                state: {
+                  userData,
+                  name: "الإختبار النهائي",
+                  type: "preScale",
+                }
+              });
+            }
+          }}
+          AlertStatus={[show_PreScale_Alert, set_showAlert_preScale]}
+        >
+          
+          <li>.أبجد هوز حطى كلمن هوى ، التوازن ، الاحتياجات</li>
+          
+          </Aleart_exam>}
+      {show_postScale_Alert &&
+        <Aleart_exam title={"تعليمات المقياس"} btn_t={'الذهاب إلى المقياس النهائي'}
+          goExam={() => {
+            if (userData) {
+              if (userData.post_scale) return;
+              navigate("/dashboard/scale", {
+                state: {
+                  userData,
+                  name: "الإختبار النهائي",
+                  type: "postScale",
+                }
+              });
+            }
+          }}
+          AlertStatus={[show_postScale_Alert, set_showAlert_postScale]}
+        >
+          
+          <li>.أبجد هوز حطى كلمن هوى ، التوازن ، الاحتياجات</li>
+          
+          </Aleart_exam>}
       <h2 className="opj-title w-max relative text-xl md:text-2xl  mb-9">
         الأقسام المتاحة
       </h2>
@@ -116,19 +171,54 @@ export default function Home_dash() {
             <h2 className="text-2xl text-slate-500">الإختبار النهائي</h2>
             <div className="img">
               <img
-                src="/imgs/dash/exam.png"
+                src="/imgs/dash/final_exam.png"
                 className="w-28 h-28  md:w-52 md:h-52"
                 alt="التحول الرقمى"
               />
             </div>
           </div>
         </div>
-        <div className="card  relative cursor-pointer  rounded-xl overflow-hidden card-effect">
+        <div 
+        
+        onClick={e => {
+          if (userData.pre_scale) {
+            return
+          }
+
+          handelExam_card("preScale");
+        }}
+        
+        className="card  relative cursor-pointer  rounded-xl overflow-hidden card-effect">
           <div
-            data-status="unDone"
+            data-status={`${userData.pre_scale ? "done" :"unDone"}`}
             className="card-content w-full h-full unDone transition bg-white  p-5 flex flex-col-reverse md:flex-row justify-between items-center rounded-xl"
           >
             <h2 className="text-2xl text-slate-500">المقياس المبدئي</h2>
+            <div className="img">
+              <img
+                src="/imgs/dash/poll.png"
+                className="w-28 h-28  md:w-52 md:h-52"
+                alt="التحول الرقمى"
+              />
+            </div>
+          </div>
+        </div>
+        <div 
+        
+        onClick={e => {
+          if (userData.post_scale) {
+            return
+          }
+
+          handelExam_card("postScale");
+        }}
+        
+        className="card  relative cursor-pointer  rounded-xl overflow-hidden card-effect">
+          <div
+            data-status={`${userData.post_scale ? "done" :"unDone"}`}
+            className="card-content w-full h-full unDone transition bg-white  p-5 flex flex-col-reverse md:flex-row justify-between items-center rounded-xl"
+          >
+            <h2 className="text-2xl text-slate-500">المقياس النهائي</h2>
             <div className="img">
               <img
                 src="/imgs/dash/poll.png"

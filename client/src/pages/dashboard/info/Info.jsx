@@ -77,8 +77,9 @@ if(userData.role == "admin") return ;
             <h2 className="text-base lg:text-xl mb-2">
               نتيجة الإختبار النهائي
             </h2>
-            <p className="text-3xl text-[--c-text-blue]">
-              {userData.postTest_Score.toString()}
+            <p className="text-3xl ">
+              <span className="text-[--c-text-blue]">{userData.postTest_Score.toString()}</span> \
+              <span> 40 </span>
             </p>
           </div>
         </div>

@@ -43,18 +43,33 @@ export const userSlice = createSlice({
       if (state.data) {
         state.data.data.preTest_Score = action.payload || 0; // قم بتعيين القيمة من action.payload
         state.data.data.preTest_Status = true
-        console.log(current(state.data));
+        // console.log(current(state.data));
+      }
+    },
+    postTest_edit: (state, action) => {
+      if (state.data) {
+        state.data.data.postTest_Score= action.payload || 0; // قم بتعيين القيمة من action.payload
+        state.data.data.postTest_Status = true
+        // console.log(current(state.data));
       }
     },
     set_preTest_time : (state,action)=>{
       state.preTest_time = state.preTest_time - 1 
-
-
-    }
+    },
+    preScale_edit: (state) => {
+      if (state.data) {
+        state.data.data.pre_scale = true; // قم بتعيين القيمة من action.payload
+      }
+    },
+    postScale_edit: (state) => {
+      if (state.data) {
+        state.data.data.post_scale = true; // قم بتعيين القيمة من action.payload
+      }
+    },
   },
 });
 
-export const { signOut, user_isLoaning, user_isLogin, user_error, user_notLoaning, user_data, preTest_edit ,set_preTest_time } = userSlice.actions;
+export const { signOut, user_isLoaning, user_isLogin, user_error, user_notLoaning, user_data, preTest_edit ,set_preTest_time , postTest_edit, preScale_edit , postScale_edit} = userSlice.actions;
 
 export default userSlice.reducer;
 

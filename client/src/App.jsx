@@ -22,6 +22,7 @@ import Protect from "./Protect";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import Info from "./pages/dashboard/info/Info";
 import Exam_dash from "./pages/dashboard/exam/Exam_dash";
+import Scale from "./pages/dashboard/Scale";
 const Dashboard_layout = lazy(()=> import("./pages/dashboard/Dashboard_layout"))
 const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Guide = lazy(() => import("./pages/guide/guide"));
@@ -84,6 +85,7 @@ function App() {
           <Route path="home" element={<Home_dash/>} />
           <Route path="info" element={<Info/>} />
           <Route path="exam" element={<Exam_dash/>} />
+          <Route path="scale" element={<Scale/>} />
         </Route>
         <Route
           path="/login-register"
@@ -130,7 +132,7 @@ function App() {
     return <Loader />;
   }
   return <Provider  store={store}>
-    
+
       <PersistGate loading={null} persistor={persistor}>
 
     <RouterProvider future={{ v7_startTransition: true }} router={router} />

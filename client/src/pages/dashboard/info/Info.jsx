@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./info.css";
 import { useSelector } from "react-redux";
 import { Loader } from "../../../component";
+import { useNavigate } from "react-router-dom";
 
 function Ex_Info() {
   const data = [
@@ -18,10 +19,10 @@ function Ex_Info() {
             <div className="cards grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 p-2 lg:p-5">
 
             {data.map((item, index) => (
-                  <div key={index} className="card-info flex bg-[#ecf0f4] p-5 lg:p-10 rounded-lg relative justify-center items-center flex-col ">
+                  <div key={index} className="z-[1] card-info flex bg-[#ecf0f4] p-5 lg:p-10 rounded-lg relative justify-center items-center flex-col ">
                     <div className="card-info__title text-base lg:text-xl mb-2">{item.t}</div>
                     <div className="card-info__score text-3xl text-[--c-text-blue]">{item.score}</div>
-                    <span className="absolute text-7xl lg:text-9xl text-[#ffffffc9] top-[0px] right-[15px]">{index + 1}</span>
+                    <span className="absolute z-[-1] text-7xl lg:text-9xl text-[#ffffffc9] top-[0px] right-[15px]">{index + 1}</span>
                   </div>
                 ))}
             </div>
@@ -34,11 +35,14 @@ function Ex_Info() {
 export default function Info() {
   const user = useSelector(state => state.user);
   const userData = user && user.data ? user.data.data : null;
-
   if (!userData) {
     return <Loader />;
   }
-
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(userData.role == "admin") navigate("/dashboard/home") ;
+  },[navigate])
+if(userData.role == "admin") return ;
   return (
     <section className="info  overflow-hidden">
       <div className="info__head mb-5 grid justify-between grid-cols-1 lg:grid-cols-2 bg-white p-2 lg:p-6 rounded-xl">
@@ -79,7 +83,8 @@ export default function Info() {
           </div>
         </div>
       </div>
-      <Ex_Info />
+      {userData.group == "ex" ? <Ex_Info /> : ""}
+      
     </section>
   );
 }

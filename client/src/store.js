@@ -1,13 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userSlice from './slice/userSlice';
 import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // لاحظ الحروف الصغيرة "storage"
+import storageSession from 'redux-persist/lib/storage/session'; // استخدام sessionStorage بدلاً من localStorage
 
 const rootReducer = combineReducers({ user: userSlice });
 
 const persistConfig = {
   key: 'root',
-  storage, // لاحظ الحروف الصغيرة "storage"
+  storage: storageSession, // استخدام sessionStorage هنا
   version: 1,
 };
 

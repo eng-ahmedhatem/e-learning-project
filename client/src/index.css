@@ -42,7 +42,9 @@ html {
   /* box-sizing: border-box;  */
 
  }
-
+input[type="text"] {
+  font-family: var(--secondFont);
+}
 body {
   
   background:#ecf0f4;
@@ -147,9 +149,11 @@ backdrop-filter: blur( 20px );
 
 [data-status="unDone"]::before {
   content: "غير مكتمل";
+  animation: shake-right 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
+
   position: absolute;
   top: 5%;
-  background-color: #777;
+  background-color: #ff0000;
   padding: 5px 10px;
   z-index: 20;
   color: #fff;
@@ -205,6 +209,33 @@ backdrop-filter: blur( 20px );
     width: 80%;
   }
 }
+@keyframes shake-right {
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 100% 50%;
+  }
+  10% {
+    transform: rotate(2deg);
+  }
+  20%,
+  40%,
+  60% {
+    transform: rotate(-4deg);
+  }
+  30%,
+  50%,
+  70% {
+    transform: rotate(4deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+}
+
 
 @-webkit-keyframes wobble-ver-right {
   0%,

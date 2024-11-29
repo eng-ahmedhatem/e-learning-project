@@ -23,6 +23,8 @@ export const register = async (req, res, next) => {
             delete userData.pre_scale;
             delete userData.postTest_Score;
             delete userData.post_scale;
+            delete userData.preTest_Status;
+            delete userData.postTest_Status;
 
             
         }

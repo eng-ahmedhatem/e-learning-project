@@ -11,7 +11,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { persistor, store } from './store'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { Header, Loader } from "./component";
 import Contact from "./pages/contact/Contact";
 const Login___Register = lazy(() => import("./pages/Login___Register/Login___Register"));
@@ -27,6 +27,7 @@ const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Guide = lazy(() => import("./pages/guide/guide"));
 
 function App() {
+  
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   useEffect(() => {
     AOS.init({
@@ -69,7 +70,9 @@ function App() {
   );
 
   const router = createBrowserRouter(
+    
     createRoutesFromElements(
+      
       <>
         <Route path="/dashboard" element={<Protect>
           <Suspense fallback={<Loader />}>
@@ -127,6 +130,7 @@ function App() {
     return <Loader />;
   }
   return <Provider  store={store}>
+    
       <PersistGate loading={null} persistor={persistor}>
 
     <RouterProvider future={{ v7_startTransition: true }} router={router} />

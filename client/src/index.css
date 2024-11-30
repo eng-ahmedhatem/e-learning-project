@@ -54,11 +54,19 @@ body {
 /* section opjectives and guide  */
 
 .Aleart_exam{
-background: rgba(97, 97, 97, 0.048);
-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.363);
-backdrop-filter: blur( 20px );
--webkit-backdrop-filter: blur( 20px );
-
+  background: rgba(74, 119, 136, 0.589);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.363);
+  backdrop-filter: blur( 20px );
+  -webkit-backdrop-filter: blur( 20px );
+  
+}
+.Aleart_exam .title{
+  color: transparent ;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+}
+.Aleart_exam h2{
+  color: blue ;
 }
 
 .opj-title::before {

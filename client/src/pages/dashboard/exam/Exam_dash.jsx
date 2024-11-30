@@ -33,7 +33,6 @@ const Quiz = () => {
   const user_D = user && user.data.data ? user.data.data : null;
   useEffect(
     () => {
-      console.log(state);
       if (state.type == "preTest") {
         if (!state || user_D.preTest_Status) {
           navigate("/dashboard/home");

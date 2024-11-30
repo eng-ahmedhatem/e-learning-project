@@ -44,7 +44,6 @@ function Register({ eventClick }) {
     const random = Math.ceil(Math.random() * 2) - 1;
     dispatch(user_isLoaning());
 
-    console.log(random);
     const jsonData = JSON.stringify({
       userName: values.userName_reg,
       email: values.email_reg,
@@ -53,7 +52,6 @@ function Register({ eventClick }) {
       group: theGroup[random],
       date: values.date_reg.toISOString().split("T")[0]
     }); // تعيين الرؤوس لتحديد نوع المحتوى
-    console.log(jsonData)
     axios
       .post("/api/auth/register", jsonData)
       .then(response => {

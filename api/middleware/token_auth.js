@@ -8,7 +8,6 @@ const token_auth = (req, res, next) => {
     jwt.verify(token, process.env.TOKEN_KEY, (err, user) => {
         if (err) return res.status(404).json({ message: "Invalid to authorization" })
             
-            console.log("ahmed")
         req.user = user
         next()
     })

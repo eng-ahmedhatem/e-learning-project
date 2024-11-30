@@ -12,7 +12,8 @@ const users_Schema = new mongoose.Schema({
     preTest_Status: { type: Boolean, default: false, required: function () { return this.role == "student" } },
     postTest_Status: { type: Boolean, default: false, required: function () { return this.role == "student" } },
     pre_scale: { type: Boolean, default: false, required: function () { return this.role == "student" } },
-    post_scale: { type: Boolean, default: false, required: function () { return this.role == "student" } }
+    post_scale: { type: Boolean, default: false, required: function () { return this.role == "student" } },
+    start_pre_And_post : {type: Boolean, default: false, required: function (){return this.role == "student"}}
 });
 
 const Users = mongoose.model("Users", users_Schema);

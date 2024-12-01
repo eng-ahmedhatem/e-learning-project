@@ -23,6 +23,7 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 import Info from "./pages/dashboard/info/Info";
 import Exam_dash from "./pages/dashboard/exam/Exam_dash";
 import Scale from "./pages/dashboard/Scale";
+import Lesson from "./pages/dashboard/Lesson";
 const Dashboard_layout = lazy(()=> import("./pages/dashboard/Dashboard_layout"))
 const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Guide = lazy(() => import("./pages/guide/guide"));
@@ -86,6 +87,7 @@ function App() {
           <Route path="info" element={<Info/>} />
           <Route path="exam" element={<Exam_dash/>} />
           <Route path="scale" element={<Scale/>} />
+          <Route path="lesson/:order" element={<Lesson/>} />
         </Route>
         <Route
           path="/login-register"

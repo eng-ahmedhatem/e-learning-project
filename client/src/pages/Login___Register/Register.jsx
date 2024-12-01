@@ -45,9 +45,9 @@ function Register({ eventClick }) {
     dispatch(user_isLoaning());
 
     const jsonData = JSON.stringify({
-      userName: values.userName_reg,
-      email: values.email_reg,
-      password: values.password_reg,
+      userName: values.userName_reg.trim(),
+      email: values.email_reg.trim(),
+      password: values.password_reg.trim(),
       role: "student",
       group: theGroup[random],
       date: values.date_reg.toISOString().split("T")[0]

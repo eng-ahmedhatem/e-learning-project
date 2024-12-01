@@ -211,12 +211,12 @@ body {
 .slide-in-fwd-center {
 	animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-
 @keyframes width-80 {
   to {
     width: 80%;
   }
 }
+
 @keyframes shake-right {
   0%,
   100% {

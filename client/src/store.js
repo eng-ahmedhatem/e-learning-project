@@ -2,8 +2,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userSlice from './slice/userSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 import storageSession from 'redux-persist/lib/storage/session'; // استخدام sessionStorage بدلاً من localStorage
+import lessonsReducer from './slice/lessonsSlice';
 
-const rootReducer = combineReducers({ user: userSlice });
+const rootReducer = combineReducers({ 
+  user: userSlice, 
+  lessons: lessonsReducer 
+});
 
 const persistConfig = {
   key: 'root',

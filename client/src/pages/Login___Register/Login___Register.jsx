@@ -47,9 +47,9 @@ export default function Login___Register() {
   const hanel_Login_submit = data => {
     dispatch(user_isLoaning())
     const jsonData = JSON.stringify({
-      userName: data.userName_login,
-      password: data.userPassword_login
-    }); // تعيين الرؤوس لتحديد نوع المحتوى
+      userName: data.userName_login.trim(),
+      password: data.userPassword_login.trim()
+    }); 
     axios
       .post("/api/auth/login", jsonData)
       .then(response => {

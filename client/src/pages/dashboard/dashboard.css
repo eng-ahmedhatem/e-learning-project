@@ -1,7 +1,7 @@
 
 
 .dashboard {
-    grid-template-columns: 250px 1fr ;
+    grid-template-columns: auto 1fr ;
     grid-template-rows: auto 1fr;
 }
 .dsh-header {
@@ -11,8 +11,10 @@
 .dsh-nav {
     grid-row: 1/3;
 }
-
 @media (max-width: 768px) {
+    .navAc-content{
+        top: 280px;
+    }
     
     .dashboard {
         grid-template-columns: 70px 1fr ;
@@ -34,6 +36,13 @@
     background-color:#000000;
     color: #ffffff;
 }
+.nav-acordion .icon{
+    background-color:#000000;
+    color: #ffffff;
+
+}
+.nav-acordion {
+}
 .dsh-nav  .nv-links  a.active{
     color: var(--c-text-yellow);
     border-radius: 10px;
@@ -42,3 +51,10 @@
     background-color: var(--c-text-yellow);
     color: #fff;
 }
+/* 
+.nav-acordion + div a span {
+    color :#000 ;
+}
+.nav-acordion + div a svg {
+    color: var(--c-text-yellow);
+} */

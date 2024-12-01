@@ -60,6 +60,9 @@ body {
   -webkit-backdrop-filter: blur( 20px );
   
 }
+.navAc-content a{
+  border-right: 2px solid var(--c-text-blue);
+}
 .Aleart_exam .title{
   color: transparent ;
   -webkit-text-stroke-width: 1px;
@@ -196,7 +199,24 @@ body {
   transform: scaleY(.97) scaleX(.99);
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 @keyframes slide-in-fwd-center {
   0% {

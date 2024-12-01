@@ -49,25 +49,25 @@ function Dashboard_nav({ userName , theIf=null}) {
               <span
                 style={{
                   transform: `${nav_ac_IsClick
-                    ? "rotate(180deg)"
-                    : "rotate(0deg)"}`
+                    ? "rotate(0deg)"
+                    : "rotate(180deg)"}`
                 }}
-                className="hidden arrow-ac absolute left-1/4 p-1 md:inline-block mr-4 text-lg rounded-full text-white bg-[--c-text-yellow]"
+                className="hidden arrow-ac absolute left-1/4 p-1 md:inline-block  mr-4 text-lg rounded-full text-white bg-[--c-text-yellow]"
               >
                 <MdKeyboardArrowDown />
               </span>
             </div>
             <div
-              className={`${nav_ac_IsClick
+              className={`content-navAC ${nav_ac_IsClick
                 ? "h-max "
                 : "h-0"} p-2  overflow-hidden transition`}
             >
               <div
                 className={`${nav_ac_IsClick
-                  ? "h-max  navAc-content"
+                  ? "h-max  "
                   : "h-0 overflow-hidden"}  absolute z-40 md:relative  bg-white rounded-xl`}
               >
-                <div className="relative">
+                <div className="navAc-content relative">
                   <span
                     onClick={() => stet_nav_ac_IsClick(!nav_ac_IsClick)}
                     className={` md:hidden text-2xl absolute top-2 left-2 hover:text-[--c-text-yellow] transition cursor-pointer`}
@@ -82,7 +82,7 @@ function Dashboard_nav({ userName , theIf=null}) {
                           pathname: `/dashboard/lesson/${ele.order}`,
                         }}
                         key={inx}
-                        className="flex text-[--c-text-blue] text-sm flex-row-reverse justify-end items-center w-full p-2"
+                        className="flex text-[--c-text-blue] text-base flex-row-reverse justify-end items-center w-full p-2"
                       >
                         <span className="text-right">
                           <span>

@@ -11,7 +11,7 @@ function Dashboard_header() {
         
     }
     return (
-        <div className='dsh-header flex justify-between items-center p-2   rounded-[0px]'>
+        <div className='dsh-header h-full flex justify-between items-center p-2   rounded-[0px]'>
             <div className="h-right  flex items-center">
             <div className="w-16 h-16 rounded-full">
             <img src="/imgs/header/وزارة التربية والتعليم.svg" alt="" />

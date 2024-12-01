@@ -11,8 +11,11 @@ export const lessonsSlice = createSlice({
     lessons_data: (state, action) => {
       state.data = action.payload;
     },
+    lesson_set: (state, action) => {
+      state.data = null;
+    }
   },
 });
 
-export const { lessons_data } = lessonsSlice.actions;
+export const { lessons_data,lesson_set } = lessonsSlice.actions;
 export default lessonsSlice.reducer;

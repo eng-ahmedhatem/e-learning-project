@@ -13,7 +13,6 @@ function Dashboard_nav({ userName , theIf=null}) {
   const data = useSelector(state => state.lessons.data)
   const lessons = data && data || [] 
   
-  console.log(theIf)
   const [nav_ac_IsClick, stet_nav_ac_IsClick] = useState(false);
   return (
     <div className="dsh-nav bg-white rounded-[0px]  overflow-hidden text-center ">

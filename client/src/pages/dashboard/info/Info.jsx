@@ -5,11 +5,22 @@ import { Loader } from "../../../component";
 import { useNavigate } from "react-router-dom";
 
 function Ex_Info() {
-  const data = [
-    { t: "التكنولوجيا الخضراء", score: 50 },
-    { t: "التكنولوجيا الخضراء", score: 150 },
-    { t: "التكنولوجيا الخضراء", score: 80 }
-  ];
+  const lessonProgress= useSelector(state => state.lessonProgress.data)
+  const lessons= useSelector(state => state.lessons.data)
+  const lessonsData = lessons || []
+  const lessonProgress_data  = lessonProgress || []
+  function getScore (id) {
+    console.log(lessonProgress_data[0].Lesson_id._id === id)
+    let progress = lessonProgress_data.filter(ele => ele.Lesson_id._id === id)[0]
+    console.log("test" , progress)
+    if(progress) {
+      return (progress.test_score / progress.test_mark) * 100
+    } else {
+      return 0
+    }
+
+  }
+  console.log(lessonsData)
   return (
     <>
       <h2 style={{textDecoration:"1px  wavy  var(--c-text-blue) underline"}} className="text-[#435986]  mx-auto  decoration-wavy w-max relative text-xl md:text-4xl mb-5 lg:mb-10">
@@ -18,10 +29,12 @@ function Ex_Info() {
           <div className="bg-white rounded-xl ">
             <div className="cards grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 p-2 lg:p-5">
 
-            {data.map((item, index) => (
-                  <div key={index} className="z-[1] card-info flex bg-[#ecf0f4] p-5 lg:p-10 rounded-lg relative justify-center items-center flex-col ">
-                    <div className="card-info__title text-base lg:text-xl mb-2">{item.t}</div>
-                    <div className="card-info__score text-3xl text-[--c-text-blue]">{item.score}</div>
+            {lessonsData.map((item, index) => (
+                  <div key={index} className="z-[1] card-info flex bg-[#ecf0f4] p-2 lg:p-5 text-center rounded-lg relative justify-center items-end flex-col ">
+                    <div className="card-info__title  text-base lg:text-lg w-3/4 text-slate-700 mb-2">{item.title}
+                    <div className="card-info__score text-4xl font-normal  md:mt-3 text-center text-[--c-text-blue]">{getScore(item._id)}<span className="text-black">%</span> </div>
+
+                    </div>
                     <span className="absolute z-[-1] text-7xl lg:text-9xl text-[#ffffffc9] top-[0px] right-[15px]">{index + 1}</span>
                   </div>
                 ))}

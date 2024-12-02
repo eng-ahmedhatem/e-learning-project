@@ -29,7 +29,7 @@ const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Guide = lazy(() => import("./pages/guide/guide"));
 
 function App() {
-  
+
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   useEffect(() => {
     AOS.init({

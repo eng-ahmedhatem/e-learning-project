@@ -35,7 +35,7 @@ const Quiz = () => {
     () => {
       if (state.type == "preTest") {
         if (!state || user_D.preTest_Status) {
-          navigate("/dashboard/home");
+          navigate("/dashboard/home",{replace:true});
         } else {
           setQuestionsData(state.q);
           setQuestions(shuffleArray([...state.q]));
@@ -43,7 +43,15 @@ const Quiz = () => {
       }
       if (state.type == "postTest") {
         if (!state || user_D.postTest_Status) {
-          navigate("/dashboard/home");
+          navigate("/dashboard/home",{replace:true});
+        } else {
+          setQuestionsData(state.q);
+          setQuestions(shuffleArray([...state.q]));
+        }
+      }
+      if (state.type == "lessonTest") {
+        if (!state || user_D.postTest_Status) {
+          navigate("/dashboard/home",{replace:true});
         } else {
           setQuestionsData(state.q);
           setQuestions(shuffleArray([...state.q]));

@@ -1,17 +1,19 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userSlice from './slice/userSlice';
 import { persistReducer, persistStore } from 'redux-persist';
-import storageSession from 'redux-persist/lib/storage/session'; // استخدام sessionStorage بدلاً من localStorage
+import storageSession from 'redux-persist/lib/storage/session';
 import lessonsReducer from './slice/lessonsSlice';
+import { lessonProgressSlice } from './slice/lessonProgressSlice';
 
 const rootReducer = combineReducers({ 
   user: userSlice, 
-  lessons: lessonsReducer 
+  lessons: lessonsReducer,
+  lessonProgress: lessonProgressSlice.reducer // تأكد من استخدام .reducer هنا
 });
 
 const persistConfig = {
   key: 'root',
-  storage: storageSession, // استخدام sessionStorage هنا
+  storage: storageSession,
   version: 1,
 };
 
@@ -21,7 +23,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // تعطيل الفحص للتسلسلات غير القابلة للتسلسل
+      serializableCheck: false,
     }),
 });
 

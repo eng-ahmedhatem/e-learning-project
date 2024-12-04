@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: null,
+  data: [],
 };
 
 export const lessonProgressSlice = createSlice({
@@ -12,7 +12,8 @@ export const lessonProgressSlice = createSlice({
       state.data = action.payload;
     },
   },
-});
+}); 
 
 export const { lessonsProgress_data } = lessonProgressSlice.actions;
 export default lessonProgressSlice.reducer;
+ 

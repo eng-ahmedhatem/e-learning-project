@@ -14,6 +14,9 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    reset_preTest_time: (state) =>{
+      state.preTest_time = 1800;
+    },
     user_isLoaning: (state) => {
       state.isLoading = true;
     },
@@ -69,7 +72,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { signOut, user_isLoaning, user_isLogin, user_error, user_notLoaning, user_data, preTest_edit ,set_preTest_time , postTest_edit, preScale_edit , postScale_edit} = userSlice.actions;
+export const {reset_preTest_time,  signOut, user_isLoaning, user_isLogin, user_error, user_notLoaning, user_data, preTest_edit ,set_preTest_time , postTest_edit, preScale_edit , postScale_edit} = userSlice.actions;
 
 export default userSlice.reducer;
 

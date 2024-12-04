@@ -9,11 +9,11 @@ export default function Lesson() {
   const lessons = useSelector(state => state.lessons.data) || [];
   const user = useSelector(state => state.user.data.data) || {};
   const isUserAuthorized = user.role === "student" && user.group === "ex";
-  const lesson =
-    user.group === "ex" ? lessons.find(ele => ele.order === +order) : null;
+  const lesson = user.group === "ex" ? lessons.find(ele => ele.order === +order) : null;
 
   useEffect(
     () => {
+      console.log(lesson)
       if (!isUserAuthorized || !lesson) {
         navigate("/dashboard/home", { replace: true });
       }
@@ -261,8 +261,17 @@ export default function Lesson() {
               اختبار الدرس الأول
             </span>
           </h2>
-          <Link>
-            <button className="!text-red-800 !w-max  !px-5 aa hover:!text-[#fff] hover:!shadow-[--c-text-red] !bg-[--c-text-red]">
+            <button onClick={()=> navigate("/dashboard/exam",{
+              state:{
+                type:"lessonTest",
+                userData:user,
+                lesson:lesson._id,
+                q:lesson.test.exam_questions,
+                name:"اختبار " + lesson.title 
+
+                
+              }
+            })} className="!text-red-800 !w-max  !px-5 aa hover:!text-[#fff] hover:!shadow-[--c-text-red] !bg-[--c-text-red]">
               اضغط هنا للإنتقال الى الإختبار{" "}
               <div className="star-1">
                 {" "}<svg
@@ -415,7 +424,6 @@ export default function Lesson() {
                 </svg>{" "}
               </div>{" "}
             </button>
-          </Link>
         </div>
       </div>
     </section>

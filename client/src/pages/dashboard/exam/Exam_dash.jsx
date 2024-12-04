@@ -4,9 +4,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   postTest_edit,
   preTest_edit,
+  reset_preTest_time,
   set_preTest_time
 } from "../../../slice/userSlice";
 import axios from "axios";
+import { lessonsProgress_data } from "../../../slice/lessonProgressSlice";
 const shuffleArray = array => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -25,9 +27,7 @@ const Quiz = () => {
   const [timeLeft, setTimeLeft] = useState(
     user && user.preTest_time ? user.preTest_time : 0
   ); // 30 دقيقة بالثواني
-  // const [timeLeft, setTimeLeft] = useState(8); // 30 دقيقة بالثواني
   const navigate = useNavigate();
-  // الحصول على الحالة الممررة من useLocation
   const { state } = useLocation();
   // redux
   const user_D = user && user.data.data ? user.data.data : null;
@@ -50,6 +50,7 @@ const Quiz = () => {
         }
       }
       if (state.type == "lessonTest") {
+        console.log(state)
         if (!state || user_D.postTest_Status) {
           navigate("/dashboard/home",{replace:true});
         } else {
@@ -123,6 +124,37 @@ const Quiz = () => {
         )
         .catch(r => console.log(r));
     }
+    if (state.type == "lessonTest") {
+      setSubmitted(true);
+      axios
+        .post(
+          `/api/lessons/progress`,
+          JSON.stringify({
+            Lesson_id:state.lesson,
+            completed: true,
+            test_score: calculateScore(),
+            test_mark:20,
+          }),{
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
+        ).then((r)=>{
+          console.log(r)
+          axios.get("/api/lessons/progress/get", {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          })
+          .then(response => { 
+            console.log(response.data.data);
+            dispatch(lessonsProgress_data(response.data.data))
+          })
+          .catch(err => console.log(err));
+        })
+        .catch(r => console.log(r));
+    }
+    dispatch(reset_preTest_time())
   };
   if (!state) return null;
   if (submitted) {
@@ -141,7 +173,7 @@ const Quiz = () => {
               ? user_D ? user_D.preTest_Score : calculateScore()
               : state.type === "postTest"
                 ? user_D ? user_D.postTest_Score : calculateScore()
-                : 0}{" "}
+                : calculateScore()}{" "}
             / {questions.length}
           </p>
 

@@ -52,7 +52,7 @@ export default function Header() {
                   to="/"
                   className={` p-5 block lg:px-2 xl:px-5 ${({ isActive }) =>
                     isActive &&
-                    "active"} text-[#000] hover:text-[--c-text-yellow] transition`}
+                    "active"} text-[#fff] lg:text-black hover:text-[--c-text-yellow] transition`}
                 >
                   الرئيسية
                 </NavLink>
@@ -62,7 +62,7 @@ export default function Header() {
                   to="/objectives"
                   className={` p-5 block lg:px-2 xl:px-5 ${({ isActive }) =>
                     isActive &&
-                    "active"} text-[#000] hover:text-[--c-text-yellow] transition`}
+                    "active"} text-[#fff] lg:text-black hover:text-[--c-text-yellow] transition`}
                 >
                   الأهداف
                 </NavLink>
@@ -72,7 +72,7 @@ export default function Header() {
                   to="/guide"
                   className={` p-5 block lg:px-2 xl:px-5 ${({ isActive }) =>
                     isActive &&
-                    "active"} text-[#000] hover:text-[--c-text-yellow] transition`}
+                    "active"} text-[#fff] lg:text-black hover:text-[--c-text-yellow] transition`}
                 >
                   دليل المٌعـــلم
                 </NavLink>
@@ -82,7 +82,7 @@ export default function Header() {
                   to="contact-us"
                   className={` p-5 block lg:px-2 xl:px-5 ${({ isActive }) =>
                     isActive &&
-                    "active"} text-[#000] hover:text-[--c-text-yellow] transition`}
+                    "active"} text-[#fff] lg:text-black hover:text-[--c-text-yellow] transition`}
                 >
                   تواصل معنا
                 </NavLink>

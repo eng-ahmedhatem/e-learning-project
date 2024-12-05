@@ -142,13 +142,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div  className="arrow absolute flex w-full justify-center  bottom-[100px] md:bottom-[50px] lg:bottom-[150px] left-2/4 -translate-x-[50%]">
+        <div  className="arrow absolute flex w-full justify-center  bottom-[100px] md:bottom-[50px] z-50 lg:bottom-[95px] left-2/4 -translate-x-[50%]">
           <IoIosArrowDropright
             onClick={handleArrowR}
-            className="text-5xl text-black transition hover:text-[#777] cursor-pointer z-20 arrow_right"
+            className="text-5xl text-slate-600 transition hover:text-[#777] cursor-pointer z-20 arrow_right"
           />
           <span ref={btn_atoCLick} onClick={handleArrowL}>
-            <IoIosArrowDropleft className="text-5xl transition hover:text-[#777] text-black cursor-pointer z-20 arrow_left" />
+            <IoIosArrowDropleft className="text-5xl transition hover:text-[#777] text-slate-600 cursor-pointer z-20 arrow_left" />
           </span>
         </div>
       </div>

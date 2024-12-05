@@ -45,12 +45,12 @@ export default function Lesson() {
       </div>
   {!hidden &&   <div className={` ${hidden ? "":"scale-in-hor-left"}  theAI fixed  transition z-50 w-full h-full top-0 right-0`}>
 
-<div  className={` fixed  bg-slate-100 overflow-hidden -translate-x-2/4 rounded-3xl shadow-2xl  -translate-y-2/4  top-2/4 left-2/4 w-5/6  h-5/6 `}>
+<div  className={` fixed  bg-slate-100 overflow-hidden -translate-x-2/4 rounded-3xl shadow-2xl  -translate-y-2/4  top-2/4 left-2/4 w-[95%] md:w-5/6  h-[90%] `}>
   <ChatComponent theStatus ={  [hidden , setHidden ] } />
 </div>
 </div>
 }
-      <h2 className=" w-max lesson_title flex flex-wrap  text-lg md:text-xl lg:text-3xl xl:text-4xl 2xl:text-5xl my-5 md:mb-9">
+      <h2 className=" w-max lesson_title flex flex-wrap flex-col md-flex-row text-lg md:text-xl lg:text-3xl xl:text-4xl 2xl:text-5xl my-5 md:mb-9">
         <span className=" text-[--c-text-blue]">
           الدرس {lesson.order_ar} :-
         </span>
@@ -280,7 +280,7 @@ export default function Lesson() {
                   name: "اختبار " + lesson.title
                 }
               })}
-            className="!text-red-800 !w-max  !px-5 aa hover:!text-[#fff] hover:!shadow-[--c-text-red] !bg-[--c-text-red]"
+            className="!text-red-800 !w-max   !px-5 aa hover:!text-[#fff] hover:!shadow-[--c-text-red] !bg-[--c-text-red]"
           >
             اضغط هنا للإنتقال الى الإختبار{" "}
             <div className="star-1">

@@ -34,6 +34,10 @@ function Ex_Info() {
                     <span className="absolute z-[-1] text-7xl lg:text-9xl text-[#ffffffc9] top-[0px] right-[15px]">{index + 1}</span>
                   </div>
                 ))}
+
+
+
+
             </div>
     </div>
     </>

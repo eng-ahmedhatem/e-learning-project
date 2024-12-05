@@ -81,7 +81,7 @@ function Register({ eventClick }) {
   });
 
   return (
-    <div className="face face-2 overflow-y-auto  w-full min-h-[75vh] ">
+    <div className="face face-2 overflow-y-auto  w-full min-h-[90vh] ">
       <div className=" parent-tow-cont  flex h-[75vh] content-sign-up">
         <div className="content w-full lg:w-2/4 p-4 py-11 md:p-11 ">
           <Link
@@ -94,15 +94,15 @@ function Register({ eventClick }) {
             <span>العودة للصفحة الرئيسية</span>
           </Link>
           <div className=" text-start  w-full ">
-            <h2 className="text-2xl text-[#0ca9be] sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-5">
+            <h2 className="text-2xl text-[#0ca9be] sm:text-3xl lg:text-2xl xl:text-4xl font-bold mb-2 sm:mb-5">
               أهلاً بكم في بيئتنا الداعمة للنمو والتطور !
             </h2>
-            <p className="text-xl text-[#dc41539e] lg:text-3xl mb-2 sm:mb-9 ">
+            <p className="text-xl text-[#dc41539e] lg:text-1xl mb-2 sm:mb-9 ">
               يسعدنا أن نكون جزءًا من رحلتكم التعليمية
             </p>
           </div>
-          <form action="" className="pb-11 md:pb-0">
-            <div className="row-fill w-full  mx-auto  grid   grid-cols-2  gap-5 justify-center items-center">
+          <form action="" className=" md:pb-0">
+            <div className="row-fill w-full  mx-auto  grid   grid-cols-2  gap-2 justify-center items-center">
               <div className="input-an userName_reg w-full relative">
                 <label
                   htmlFor="userName_reg"
@@ -242,7 +242,7 @@ function Register({ eventClick }) {
               </div>
             </div>
 
-            <div className="row_buttons mt-8 lg:mt-4 2xl:mt-10 w-full lg:w-10/12 mx-auto flex  justify-center gap-4 ">
+            <div className="row_buttons  mt-8 lg:mt-4 2xl:mt-10 w-full lg:w-10/12 mx-auto flex  justify-center gap-4 ">
               <div
                 onClick={formik.handleSubmit}
                 className={` ${isLoading && "pointer-events-none opacity-[.90]"} bg-[--btn-bg] flex scale-95 hover:scale-105 justify-center items-center h-[40px]  border border-[--btn-bg]  hover:bg-[transparent] transition cursor-pointer hover:text-[--btn-bg]  basis-2/4 rounded-[5px] text-[#FFF7D1]`}

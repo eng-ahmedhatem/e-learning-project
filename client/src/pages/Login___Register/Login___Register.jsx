@@ -110,10 +110,10 @@ export default function Login___Register() {
 
       <div className=" parent w-full h-screen flex justify-center items-center bg-[#bdd4da]">
         <div
-          className={`relative parent-log_reg rounded-3xl  bg-[#c8d5d8] min-h-[75vh]  shadow-xl w-11/12 ${mode &&
+          className={`relative parent-log_reg rounded-3xl  bg-[#c8d5d8] min-h-[90vh]  shadow-xl w-11/12 ${mode &&
             "changeMode"}`}
         >
-          <div className="face overflow-y-auto face-1  w-full min-h-[75vh]">
+          <div className="face overflow-y-auto face-1  w-full min-h-[90vh]">
             <div className="parent-tow-cont  flex h-[75vh] content-sign-up">
               <div className="content  w-full lg:w-2/4 p-4 py-11 md:p-11 ">
                 <Link
@@ -126,7 +126,7 @@ export default function Login___Register() {
                   <span>العودة للصفحة الرئيسية</span>
                 </Link>
                 <div className=" text-start  w-full ">
-                  <h2 className="text-2xl text-[--c-text-blue] sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-5">
+                  <h2 className="text-2xl text-[--c-text-blue] sm:text-3xl lg:text-2xl xl:text-4xl font-bold mb-2 sm:mb-5">
                     مرحبا بك من جديد قم بتسجيل الدخول الأن
                   </h2>
                   <p className="text-xl text-[--c-text-red] lg:text-3xl mb-2 sm:mb-9 ">
@@ -254,7 +254,7 @@ export default function Login___Register() {
                     </div>
                     <div
                       onClick={() => setMode(!mode)}
-                      className="vibrate-1 cursor-pointer hover:animate-none newUser_btn border flex justify-center items-center h-[40px] border-[--btn-bg] hover:bg-[--btn-bg] scale-95 hover:scale-105 hover:text-[#FFF7D1] text-[--btn-bg] transition  basis-2/4 rounded-[5px] "
+                      className="vibrate-1 cursor-pointer  hover:animate-none newUser_btn border flex justify-center items-center h-[40px] border-[--btn-bg] hover:bg-[--btn-bg] scale-95 hover:scale-105 hover:text-[#FFF7D1] text-[--btn-bg] transition  basis-2/4 rounded-[5px] "
                     >
                       <span className="text-2xl ml-4 block ">
                         <TiUserAdd />

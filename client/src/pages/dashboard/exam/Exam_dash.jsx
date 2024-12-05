@@ -133,7 +133,7 @@ const Quiz = () => {
             Lesson_id:state.lesson,
             completed: true,
             test_score: calculateScore(),
-            test_mark:20,
+            test_mark:state.q.length,
           }),{
             headers: {
               'Content-Type': 'application/json',

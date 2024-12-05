@@ -253,12 +253,7 @@
   color: #fff;
 }
 
-
-
-
-
-
-/* From Uiverse.io by StealthWorm */ 
+/* From Uiverse.io by StealthWorm */
 .ai-btn .btn {
   display: flex;
   justify-content: center;
@@ -285,6 +280,15 @@
   background-clip: content-box, border-box;
 }
 
+.scale-in-hor-left {
+  animation: scale-in-hor-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.theAI {
+  background: rgba(155, 154, 154, 0.308);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(19px);
+  -webkit-backdrop-filter: blur(19px);
+}
 .ai-btn #container-stars {
   position: absolute;
   z-index: -1;

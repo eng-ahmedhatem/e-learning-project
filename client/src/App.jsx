@@ -26,6 +26,7 @@ import Scale from "./pages/dashboard/Scale";
 import Lesson from "./pages/dashboard/Lesson";
 const Dashboard_layout = lazy(()=> import("./pages/dashboard/Dashboard_layout"))
 const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
+const Chatall = lazy(() => import("./pages/chatall/Chatall"));
 const Guide = lazy(() => import("./pages/guide/guide"));
 
 function App() {
@@ -121,6 +122,14 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <Objectives />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/forum"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Chatall />
               </Suspense>
             }
           />

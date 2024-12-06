@@ -126,7 +126,10 @@ const Quiz = () => {
     }
     if (state.type == "lessonTest") {
       setSubmitted(true);
-      axios
+      const result_percentage = Math.ceil((calculateScore() / state.q.length ) * 100 )
+      console.log(result_percentage)
+      if (result_percentage >= 50){
+        axios
         .post(
           `/api/lessons/progress`,
           JSON.stringify({
@@ -153,6 +156,7 @@ const Quiz = () => {
           .catch(err => console.log(err));
         })
         .catch(r => console.log(r));
+      }
     }
     dispatch(reset_preTest_time())
   };
@@ -167,7 +171,7 @@ const Quiz = () => {
           <h1 className="text-3xl font-bold text-center mb-8 text-purple-900">
             النتائج
           </h1>
-          <p className="text-xl text-[green] text-center mb-8">
+          <p className={`text-xl ${calculateScore() == 0 ? "text-red-600" :"text-[green]"}  text-center mb-8`}>
             درجتك:{" "}
             {state.type === "preTest"
               ? user_D ? user_D.preTest_Score : calculateScore()

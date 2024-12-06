@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   background:var(--main-bg,rgb(186 193 195 / 71%));
-
+font-family: var(--mainFont);
   height: 100svh;
   overflow: hidden;
   /* background: url("./imgs/home/11.jpg") no-repeat;

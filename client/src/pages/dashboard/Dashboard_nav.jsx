@@ -5,15 +5,21 @@ import { MdInfoOutline } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import { IoCloseCircleOutline } from "react-icons/io5";
-
 import { MdOutlinePlayLesson } from "react-icons/md";
 import { useSelector } from "react-redux";
-
 function Dashboard_nav({ userName , theIf=null}) {
   const data = useSelector(state => state.lessons.data)
+  const userProgress = useSelector(state=> state.lessonProgress.data) || []
   const lessons = data && data || [] 
-  
   const [nav_ac_IsClick, stet_nav_ac_IsClick] = useState(false);
+  function check_userProgres(lessonOrder) {
+    if (lessonOrder == 1) return true ;
+    if (!userProgress) return false ;
+    const brv_lessonProgress = userProgress.find(pro => pro.Lesson_id.order == lessonOrder - 1) 
+    if (!brv_lessonProgress ) return false ;
+    if (brv_lessonProgress.completed) return true ;
+    return false
+  }
   return (
     <div className="dsh-nav bg-white rounded-[0px]  overflow-hidden text-center ">
       <div className="hidden md:block nav-top">
@@ -73,15 +79,14 @@ function Dashboard_nav({ userName , theIf=null}) {
                   >
                     <IoCloseCircleOutline />
                   </span>
-
                   {lessons.length > 0 &&
                     lessons.map((ele, inx) =>
                       <NavLink
                         to={{
-                          pathname: `/dashboard/lesson/${ele.order}`,
+                          pathname: check_userProgres ? `/dashboard/lesson/${ele.order}` : "",
                         }}
                         key={inx}
-                        className="flex text-[--c-text-blue] text-base flex-row-reverse justify-end items-center w-full p-2"
+                        className={`${check_userProgres(ele.order) ? "text-[--c-text-blue] ":"text-slate-200 pointer-events-none"} flex  text-base flex-row-reverse justify-end items-center w-full p-2`}
                       >
                         <span className="text-right">
                           <span>
@@ -97,7 +102,6 @@ function Dashboard_nav({ userName , theIf=null}) {
               </div>
             </div>
           </div>}
-
         <NavLink
           to={"/dashboard/info"}
           className="w-[100%]  hover:text-[--c-text-yellow] p-1 pl-0 lg:pl-6 flex justify-center md:justify-start items-center gap-0"

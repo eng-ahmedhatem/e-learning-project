@@ -1,14 +1,21 @@
 .dashboard {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+  -ms-grid-rows: auto 1fr;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
 }
 
 .dsh-header {
   background-color: #fff;
+  -ms-grid-column: 2;
   grid-column: 2 / 2;
 }
 
 .dsh-nav {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
   grid-row: 1 / 3;
   height: 100vh;
 }
@@ -22,32 +29,33 @@
 .acord_title {
   color: transparent;
   -webkit-text-stroke: 1px black;
+  text-stroke: 1px black; /* لعمل توافق مع المتصفحات القديمة */
 }
 
 .acordion.active {
   padding-bottom: 16px;
+  -webkit-transition: background-color 3s linear;
   transition: background-color 3s linear;
 }
 
 .acordion-body {
   overflow: hidden;
   max-height: 0;
+  -webkit-transition: max-height 0.5s ease-out, padding 0.5s ease-out;
   transition: max-height 0.5s ease-out, padding 0.5s ease-out;
 }
+
 .acordion-body.open {
-  max-height: max-content; /* اضبط هذا الرقم حسب المحتوى */
+  max-height: 1000px; /* استخدام رقم كبير للمتصفحات القديمة */
   padding: 1rem;
 }
+
 .acordion-body.closed {
   padding: 0;
 }
-.acordion.active .acordion-body {
-  height: max-content;
-  padding: 16px;
-}
 
 .acordion.active .acordion-body {
-  height: max-content;
+  height: auto;
   padding: 16px;
 }
 
@@ -55,6 +63,7 @@
   background: var(--c-text-blue);
   color: #fff;
 }
+
 /* From Uiverse.io by MuhammadHasann */
 .foot button {
   position: relative;
@@ -66,6 +75,7 @@
   border: 3px solid #ffffff;
   border-radius: 8px;
   box-shadow: 0 0 0 #fec1958c;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -78,6 +88,7 @@
   height: auto;
   filter: drop-shadow(0 0 0 #fffdef);
   z-index: -5;
+  -webkit-transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
   transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
 }
 
@@ -89,6 +100,7 @@
   height: auto;
   filter: drop-shadow(0 0 0 #fffdef);
   z-index: -5;
+  -webkit-transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
   transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
 }
 
@@ -100,6 +112,7 @@
   height: auto;
   filter: drop-shadow(0 0 0 #fffdef);
   z-index: -5;
+  -webkit-transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
   transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
 }
 
@@ -111,6 +124,7 @@
   height: auto;
   filter: drop-shadow(0 0 0 #fffdef);
   z-index: -5;
+  -webkit-transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
   transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
 }
 
@@ -122,6 +136,7 @@
   height: auto;
   filter: drop-shadow(0 0 0 #fffdef);
   z-index: -5;
+  -webkit-transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
   transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
 }
 
@@ -133,6 +148,7 @@
   height: auto;
   filter: drop-shadow(0 0 0 #fffdef);
   z-index: -5;
+  -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
 }
 
@@ -141,6 +157,7 @@
   color: var(--c-text-blue);
   box-shadow: 0 0 25px var(--c-text-blue);
 }
+
 .foot button.aa:hover {
   background: transparent;
   color: var(--c-text-blue);
@@ -148,61 +165,43 @@
 }
 
 .foot button:hover .star-1 {
-  position: absolute;
   top: -80%;
   left: -30%;
-  width: 25px;
-  height: auto;
   filter: drop-shadow(0 0 10px #fffdef);
   z-index: 2;
 }
 
 .foot button:hover .star-2 {
-  position: absolute;
   top: -25%;
   left: 10%;
-  width: 15px;
-  height: auto;
   filter: drop-shadow(0 0 10px #fffdef);
   z-index: 2;
 }
 
 .foot button:hover .star-3 {
-  position: absolute;
   top: 55%;
   left: 25%;
-  width: 5px;
-  height: auto;
   filter: drop-shadow(0 0 10px #fffdef);
   z-index: 2;
 }
 
 .foot button:hover .star-4 {
-  position: absolute;
   top: 30%;
   left: 80%;
-  width: 8px;
-  height: auto;
   filter: drop-shadow(0 0 10px #fffdef);
   z-index: 2;
 }
 
 .foot button:hover .star-5 {
-  position: absolute;
   top: 25%;
   left: 115%;
-  width: 15px;
-  height: auto;
   filter: drop-shadow(0 0 10px #fffdef);
   z-index: 2;
 }
 
 .foot button:hover .star-6 {
-  position: absolute;
   top: 5%;
   left: 60%;
-  width: 5px;
-  height: auto;
   filter: drop-shadow(0 0 10px #fffdef);
   z-index: 2;
 }
@@ -219,21 +218,27 @@
 
 @media (max-width: 768px) {
   .dashboard {
+    -ms-grid-columns: 70px 1fr;
     grid-template-columns: 70px 1fr;
+    -ms-grid-rows: auto 1fr;
     grid-template-rows: auto 1fr;
   }
 
   .dsh-header {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
     grid-column: 1 / 3;
   }
 
   .dsh-nav {
+    -ms-grid-row: 2;
     grid-row: 2 / 3;
   }
 }
 
 .dsh-nav .nv-links a {
   border-radius: 10px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -253,7 +258,6 @@
   color: #fff;
 }
 
-/* From Uiverse.io by StealthWorm */
 .ai-btn .btn {
   display: flex;
   justify-content: center;
@@ -264,18 +268,12 @@
   background-size: 300% 300%;
   cursor: pointer;
   backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
   border-radius: 5rem;
   transition: 0.5s;
   animation: gradient_301 5s ease infinite;
   border: double 4px transparent;
-  background-image: linear-gradient(#212121, #212121),
-    linear-gradient(
-      137.48deg,
-      #ffdb3b 10%,
-      #fe53bb 45%,
-      #8f51ea 67%,
-      #0044ff 87%
-    );
+  background-image: linear-gradient(#212121, #212121), linear-gradient(137.48deg, #ffdb3b 10%, #fe53bb 45%, #8f51ea 67%, #0044ff 87%);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -283,12 +281,14 @@
 .scale-in-hor-left {
   animation: scale-in-hor-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
 .theAI {
   background: rgba(155, 154, 154, 0.308);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(19px);
   -webkit-backdrop-filter: blur(19px);
 }
+
 .ai-btn #container-stars {
   position: absolute;
   z-index: -1;
@@ -297,6 +297,7 @@
   overflow: hidden;
   transition: 0.5s;
   backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
   border-radius: 5rem;
 }
 
@@ -306,6 +307,7 @@
   font-size: 15px;
   color: yellow;
   -webkit-text-stroke: none;
+  text-stroke: none;
   /* text-shadow: 0 0 4px white; */
 }
 

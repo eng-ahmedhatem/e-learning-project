@@ -3,10 +3,10 @@ import "./chat.css";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { IoSendSharp } from "react-icons/io5";
 import { GoogleGenerativeAI } from '@google/generative-ai'
-const ChatComponent = ({ theStatus }) => {
+const ChatComponent = ({ theStatus ,userName }) => {
   const [hidden, setHidden] = theStatus;
   const [isLoading,setIsloading] = useState(false);
-  const [massages , setMassages]= useState([{from:"ai",m:"أهلا وسهلاً بك يا أحمد , اخبرني كيف استطيع مساعدتك اليوم 😊 ."}])
+  const [massages , setMassages]= useState([{from:"ai",m:`أهلاً وسهلا بك يا ${userName} كيف أستطيع مساعدتك اليوم 😊`}])
   const [qu, setQu] = useState("");
   const [cheked, setCheked] = useState(true);
   const body = useRef(null)
@@ -15,7 +15,6 @@ const ChatComponent = ({ theStatus }) => {
     if (qu.length == 0) return;
     const bodyData = massages.filter(ele => ele)
     bodyData.push({from:"user",m:qu})
-    // setMassages(prev => prev =[...massages,{from:"user",m:qu}])
     setQu("")
     setMassages(prev => prev= bodyData)
     const genAI = new GoogleGenerativeAI('AIzaSyBidlDAeojoqqJJ9MGGXlxA_X_0DPE0Jxs');

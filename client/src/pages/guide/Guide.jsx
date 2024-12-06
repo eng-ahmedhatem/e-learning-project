@@ -3,6 +3,7 @@ import React from 'react'
 export default function Guide() {
   return (
     <section
+    style={{fontFamily:"var(--mainFont)"}}
     className='Guide p-2'>
      <div className="container pt-32  mx-auto ">
         <div data-aos="fade-up"  className="  opj-card bg-white p-5">

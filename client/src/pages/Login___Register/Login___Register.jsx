@@ -284,7 +284,7 @@ export default function Login___Register() {
               <div className="img relative  rotate  overflow-hidden w-2/4 hidden lg:block  ">
                 <img
                   src="./imgs/Login___Register/e-learning_login.webp"
-                  className="h-full aria-busy:  w-full absolute lg:-bottom-[97px] 2xl:-bottom-[53px] right-0 object-cover "
+                  className="h-full aria-busy:  w-full absolute lg:-bottom-[97px] 2xl:-bottom-[53px] right-0 "
                   alt="img-login"
                 />
               </div>

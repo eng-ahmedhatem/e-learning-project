@@ -46,14 +46,12 @@ export const userSlice = createSlice({
       if (state.data) {
         state.data.data.preTest_Score = action.payload || 0; // قم بتعيين القيمة من action.payload
         state.data.data.preTest_Status = true
-        // console.log(current(state.data));
       }
     },
     postTest_edit: (state, action) => {
       if (state.data) {
         state.data.data.postTest_Score= action.payload || 0; // قم بتعيين القيمة من action.payload
         state.data.data.postTest_Status = true
-        // console.log(current(state.data));
       }
     },
     set_preTest_time : (state,action)=>{

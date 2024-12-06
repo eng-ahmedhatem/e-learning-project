@@ -87,6 +87,16 @@ export default function Header() {
                   تواصل معنا
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="forum"
+                  className={` p-5 block lg:px-2 xl:px-5 ${({ isActive }) =>
+                    isActive &&
+                    "active"} text-[#fff] lg:text-black hover:text-[--c-text-yellow] transition`}
+                >
+                  منتدى النقاش
+                </NavLink>
+              </li>
               <li className="m-5 lg:hidden block login_And_Register scale-95 hover:scale-100 transition">
               {isLogin
           ? <div className=" lg:block  scale-95 hover:scale-100 transition">

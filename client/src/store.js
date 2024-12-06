@@ -8,7 +8,7 @@ import { lessonProgressSlice } from './slice/lessonProgressSlice';
 const rootReducer = combineReducers({ 
   user: userSlice, 
   lessons: lessonsReducer,
-  lessonProgress: lessonProgressSlice.reducer // تأكد من استخدام .reducer هنا
+  lessonProgress: lessonProgressSlice.reducer 
 });
 
 const persistConfig = {

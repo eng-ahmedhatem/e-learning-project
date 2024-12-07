@@ -1,15 +1,27 @@
 .loader_content  {
     width: 100%;
     height: 100svh;
+    background-color: rgba(0, 0, 0, 0.151);
     backdrop-filter: blur(50px);
 }
 /* From Uiverse.io by gustavofusco */ 
 .pencil {
   display: block;
+  width: 12em;
+  height: 12em;
+}
+/* @media (min-width: 768px){
+  .pencil {
+  display: block;
+  width: 15em;
+  height: 15em;
+}} */
+@media (max-width: 768px){
+  .pencil {
+  display: block;
   width: 10em;
   height: 10em;
-}
-
+}}
 .pencil__body1,
 .pencil__body2,
 .pencil__body3,

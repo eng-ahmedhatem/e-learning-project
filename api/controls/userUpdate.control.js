@@ -9,7 +9,6 @@ const userUpdated_controller = async (req, res, next) => {
         }
         const update = await Users.findByIdAndUpdate(id,req.body,{new:true})
         res.json({ message: "success update" })
-        // console.log(update)
     } catch (error) {
         res.json({ message: "Failed update" }).status(500)
         console.log(error)

@@ -59,7 +59,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -143,7 +143,6 @@ function App() {
     return <Loader />;
   }
   return <Provider  store={store}>
-
       <PersistGate loading={null} persistor={persistor}>
 
     <RouterProvider future={{ v7_startTransition: true }} router={router} />

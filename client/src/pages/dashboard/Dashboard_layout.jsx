@@ -8,6 +8,7 @@ import { Loader } from '../../component'
 import axios from 'axios'
 import { lesson_set, lessons_data } from '../../slice/lessonsSlice'
 import { lessonsProgress_data } from '../../slice/lessonProgressSlice'
+import Admin from './Admin'
 export default function Dashboard_layout() {
   const [userGroup,set_userGroup] = useState()
   const [userProgress,set_userProgress] = useState([])
@@ -40,6 +41,8 @@ useEffect(()=>{
 },[])
 
   if (!data) return <Loader/>
+  if (data && data.role == "admin") return <Admin/>
+  console.log(data)
   return (
     <section  style={{fontFamily:"var(--mainFont)"}}    className='dashboard bg-[#ecf0f4]  pb-0 grid h-svh '>
         <Dashboard_header/>

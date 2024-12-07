@@ -142,7 +142,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div  className="arrow absolute flex w-full justify-center  bottom-[100px] md:bottom-[50px] z-50 lg:bottom-[95px] left-2/4 -translate-x-[50%]">
+        <div  className="arrow absolute flex w-full justify-center  bottom-[100px] md:bottom-[50px] z-10 lg:bottom-[95px] left-2/4 -translate-x-[50%]">
           <IoIosArrowDropright
             onClick={handleArrowR}
             className="text-5xl text-slate-600 transition hover:text-[#777] cursor-pointer z-20 arrow_right"

@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import http from "http";
 import { Server as socketIo } from "socket.io";
 import cookieParser from "cookie-parser";
+import bcryptjs from "bcryptjs";
 
 import exam from "./models/exams.models.js";
 import router from "./routes/auth.route.js";
@@ -12,6 +13,8 @@ import token_auth from "./middleware/token_auth.js";
 import Lesson from "./models/lesson.module.js";
 import router_updateUser from "./routes/userUpdate.js";
 import lessons_route from "./routes/lessons.route.js";
+import Users from "./models/users-models.js";
+import dash_router from "./routes/dash.route.js";
 
 dotenv.config();
 
@@ -30,6 +33,7 @@ app.use("/api", token_auth);
 app.use("/api", exams_router);
 app.use("/api", router_updateUser);
 app.use("/api", lessons_route);
+app.use("/api", dash_router);
 
 mongoose.connect(process.env.MONGODB).then(async () => {
   console.log("Connected to MongoDB");

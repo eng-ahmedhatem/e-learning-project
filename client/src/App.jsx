@@ -27,7 +27,7 @@ import Lesson from "./pages/dashboard/Lesson";
 const Dashboard_layout = lazy(()=> import("./pages/dashboard/Dashboard_layout"))
 const Objectives = lazy(() => import("./pages/Objectives/Objectives"));
 const Chatall = lazy(() => import("./pages/chatall/Chatall"));
-const Guide = lazy(() => import("./pages/guide/guide"));
+const Guide = lazy(() => import("./pages/guide/Guide"));
 
 function App() {
 

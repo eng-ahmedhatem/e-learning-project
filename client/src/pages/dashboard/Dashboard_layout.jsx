@@ -42,7 +42,6 @@ useEffect(()=>{
 
   if (!data) return <Loader/>
   if (data && data.role == "admin") return <Admin/>
-  console.log(data)
   return (
     <section  style={{fontFamily:"var(--mainFont)"}}    className='dashboard bg-[#ecf0f4]  pb-0 grid h-svh '>
         <Dashboard_header/>

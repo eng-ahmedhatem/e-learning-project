@@ -48,7 +48,7 @@ export default function Home_dash() {
               navigate("/dashboard/exam", {
                 state: {
                   userData,
-                  name: "الإختبار الأولي",
+                  name: "الإختبار القبلي",
                   type: "preTest",
                   q: pre_And_post_exam_q
                 }
@@ -69,7 +69,7 @@ export default function Home_dash() {
               navigate("/dashboard/exam", {
                 state: {
                   userData,
-                  name: "الإختبار النهائي",
+                  name: "الإختبار البعدي",
                   type: "postTest",
                   q: pre_And_post_exam_q
                 }
@@ -83,14 +83,14 @@ export default function Home_dash() {
           <li className="mb-2 list-inside list-disc">تستطيع بعد انتهاء الإختبار مراجعة أجوبتك ومعرفة الإجابة الصحيحة</li>
           </Aleart_exam>}
       {show_PreScale_Alert &&
-        <Aleart_exam title={"تعليمات المقياس"} btn_t={'الذهاب إلى المقياس المبدئي'}
+        <Aleart_exam title={"تعليمات المقياس"} btn_t={'الذهاب إلى المقياس القبلي'}
           goExam={() => {
             if (userData) {
               if (userData.pre_scale) return;
               navigate("/dashboard/scale", {
                 state: {
                   userData,
-                  name: "الإختبار النهائي",
+                  name: "الإختبار البعدي",
                   type: "preScale",
                 }
               });
@@ -112,14 +112,14 @@ export default function Home_dash() {
             </li>          
           </Aleart_exam>}
       {show_postScale_Alert &&
-        <Aleart_exam title={"تعليمات المقياس"} btn_t={'الذهاب إلى المقياس النهائي'}
+        <Aleart_exam title={"تعليمات المقياس"} btn_t={'الذهاب إلى المقياس البعدي'}
           goExam={() => {
             if (userData) {
               if (userData.post_scale) return;
               navigate("/dashboard/scale", {
                 state: {
                   userData,
-                  name: "الإختبار النهائي",
+                  name: "الإختبار البعدي",
                   type: "postScale",
                 }
               });
@@ -157,7 +157,7 @@ export default function Home_dash() {
             data-status={`${userData.preTest_Status ? "done" :"unDone"}`}
             className="card-content w-full h-full unDone transition bg-white  p-5 flex flex-col-reverse md:flex-row justify-between items-center rounded-xl"
           >
-            <h2 className="text-2xl text-slate-500">الإختبار المبدئي</h2>
+            <h2 className="text-2xl text-slate-500">الإختبار القبلي</h2>
             <div className="img">
               <img
                 src="/imgs/dash/exam.png"
@@ -167,20 +167,6 @@ export default function Home_dash() {
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         {userData&&userData.start_pre_And_post &&       <div
           onClick={e => {
             if (userData.postTest_Status) {
@@ -194,7 +180,7 @@ export default function Home_dash() {
             data-status={`${userData.postTest_Status ? "done" :"unDone"}`}
             className="card-content w-full h-full unDone transition bg-white  p-5 flex flex-col-reverse md:flex-row justify-between items-center rounded-xl"
           >
-            <h2 className="text-2xl text-slate-500">الإختبار النهائي</h2>
+            <h2 className="text-2xl text-slate-500">الإختبار البعدي</h2>
             <div className="img">
               <img
                 src="/imgs/dash/final_exam.png"
@@ -204,26 +190,7 @@ export default function Home_dash() {
             </div>
           </div>
         </div>
-
-
  }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div 
         onClick={e => {
           if (userData.pre_scale) {
@@ -236,7 +203,7 @@ export default function Home_dash() {
             data-status={`${userData.pre_scale ? "done" :"unDone"}`}
             className="card-content w-full h-full unDone transition bg-white  p-5 flex flex-col-reverse md:flex-row justify-between items-center rounded-xl"
           >
-            <h2 className="text-2xl text-slate-500">المقياس المبدئي</h2>
+            <h2 className="text-2xl text-slate-500">المقياس القبلي</h2>
             <div className="img">
               <img
                 src="/imgs/dash/poll.png"
@@ -246,9 +213,6 @@ export default function Home_dash() {
             </div>
           </div>
         </div>
-
-
-
 {userData&&userData.start_pre_And_post &&         <div 
         onClick={e => {
           if (userData.post_scale) {
@@ -261,7 +225,7 @@ export default function Home_dash() {
             data-status={`${userData.post_scale ? "done" :"unDone"}`}
             className="card-content w-full h-full unDone transition bg-white  p-5 flex flex-col-reverse md:flex-row justify-between items-center rounded-xl"
           >
-            <h2 className="text-2xl text-slate-500">المقياس النهائي</h2>
+            <h2 className="text-2xl text-slate-500">المقياس البعدي</h2>
             <div className="img">
               <img
                 src="/imgs/dash/poll-2.png"
@@ -271,11 +235,6 @@ export default function Home_dash() {
             </div>
           </div>
         </div>}
-
-
-        
-
-
       </div>
     </div>
   );

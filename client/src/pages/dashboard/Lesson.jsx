@@ -18,9 +18,6 @@ export default function Lesson() {
 
   useEffect(
     () => {
-      console.log("the lesson => ", lesson); 
-      console.log("the user progress => ",userProgress) 
-      console.log("currentLesson_userProgress => ", currentLesson_userProgress)
       if (!isUserAuthorized || !lesson) { 
         navigate("/dashboard/home", { replace: true });
       }
@@ -79,23 +76,19 @@ export default function Lesson() {
         </ul>
       </Accordion>
       <Accordion status={false} title="شرح الدرس">
-        <div
-          style={{ position: "relative" }}
-          className="h-[600px] object-cover"
-        >
-          <iframe
-            className="h-full  md:h-[600px] object-cover"
-            src={lesson.videoLink}
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%"
-            }}
-          />
-        </div>
+      <div
+  style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}
+  className="w-full h-0"
+>
+  <iframe
+    className="absolute top-0 left-0 w-full h-full object-cover"
+    src={lesson.videoLink}
+    frameBorder="0"
+    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+    title="lesson_4"
+  ></iframe>
+</div>
+
       </Accordion>
       <Accordion status={false} title="الأنشـــطة">
         <ul className="transition">

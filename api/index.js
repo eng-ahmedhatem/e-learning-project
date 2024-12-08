@@ -4,20 +4,16 @@ import dotenv from "dotenv";
 import http from "http";
 import { Server as socketIo } from "socket.io";
 import cookieParser from "cookie-parser";
-import bcryptjs from "bcryptjs";
-
-import exam from "./models/exams.models.js";
+import path from "path";
 import router from "./routes/auth.route.js";
 import exams_router from "./routes/exams.route.js";
 import token_auth from "./middleware/token_auth.js";
-import Lesson from "./models/lesson.module.js";
 import router_updateUser from "./routes/userUpdate.js";
 import lessons_route from "./routes/lessons.route.js";
-import Users from "./models/users-models.js";
 import dash_router from "./routes/dash.route.js";
 
 dotenv.config();
-
+const __dirname = path.resolve()
 const app = express();
 const server = http.createServer(app);
 const io = new socketIo(server, {
@@ -34,7 +30,10 @@ app.use("/api", exams_router);
 app.use("/api", router_updateUser);
 app.use("/api", lessons_route);
 app.use("/api", dash_router);
-
+app.use(express.static(path.join(__dirname,"/client/dist")))
+app.get("*",(req,res)=> {
+  res.sendFile(path.join(__dirname, "/client/dist/index.html"));
+})
 mongoose.connect(process.env.MONGODB).then(async () => {
   console.log("Connected to MongoDB");
 }).catch(err => {

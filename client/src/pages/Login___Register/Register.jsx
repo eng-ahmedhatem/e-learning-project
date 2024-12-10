@@ -81,9 +81,9 @@ function Register({ eventClick }) {
   });
 
   return (
-    <div className="face face-2 overflow-y-auto  w-full min-h-[90vh] ">
-      <div className=" parent-tow-cont  flex h-[75vh] content-sign-up">
-        <div className="content w-full lg:w-2/4 p-4 py-11 md:p-11 ">
+    <div className="face !bg-white face-2 overflow-y-auto  w-full h-[600px]   lg:min-h-[90vh]  ">
+      <div className=" parent-tow-cont  flex  h-[600px] lg:h-[75vh] content-sign-up">
+        <div className="content w-full lg:w-2/4 p-4 py-11 lg:p-11 ">
           <Link
             to={"/"}
             className="flex text-[--btn-bg] text-l items-center transition hover:opacity-50 mb-2 lg:mb-5"

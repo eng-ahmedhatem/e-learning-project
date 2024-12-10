@@ -110,11 +110,11 @@ export default function Login___Register() {
 
       <div className=" parent w-full h-screen flex justify-center items-center bg-[#bdd4da]">
         <div
-          className={`relative parent-log_reg rounded-3xl  bg-[#c8d5d8] min-h-[90vh]  shadow-xl w-11/12 ${mode &&
+          className={`relative parent-log_reg rounded-3xl  bg-[#c8d5d8]  h-[600px]   lg:min-h-[90vh]   shadow-xl w-11/12 ${mode &&
             "changeMode"}`}
         >
-          <div className="face overflow-y-auto face-1  w-full min-h-[90vh]">
-            <div className="parent-tow-cont  flex h-[75vh] content-sign-up">
+          <div className="face overflow-y-auto face-1 h-[600px] w-full  h-[600px]   lg:min-h-[90vh] ">
+            <div className="parent-tow-cont  flex  lg:h-[75vh] content-sign-up">
               <div className="content  w-full lg:w-2/4 p-4 py-11 md:p-11 ">
                 <Link
                   to={"/"}

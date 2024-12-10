@@ -6,7 +6,7 @@ export default function Home() {
   const [currentImg, setCurrentImg] = useState(0);
   const btn_atoCLick = useRef(null);
   useEffect(() => {
-    const tt = setTimeout(() => {
+    const tt = setInterval(() => {
       btn_atoCLick.current.click();
     }, 5000);
     return () => clearTimeout(tt);

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import http from "http";
 import { Server as socketIo } from "socket.io";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from "path";
 import router from "./routes/auth.route.js";
@@ -13,15 +14,19 @@ import lessons_route from "./routes/lessons.route.js";
 import dash_router from "./routes/dash.route.js";
 
 dotenv.config();
-const __dirname = path.resolve()
+const __dirname = path.resolve();
 const app = express();
 const server = http.createServer(app);
 const io = new socketIo(server, {
   cors: {
-    origin: "*",
+    origin: "*", // يمكنك تحديد النطاقات المسموح بها بدلاً من "*"
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
   }
 });
 
+app.use(cors()); // تمكين CORS في Express
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", router);
@@ -30,10 +35,11 @@ app.use("/api", exams_router);
 app.use("/api", router_updateUser);
 app.use("/api", lessons_route);
 app.use("/api", dash_router);
-app.use(express.static(path.join(__dirname,"/client/dist")))
-app.get("*",(req,res)=> {
+app.use(express.static(path.join(__dirname, "/client/dist")));
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/client/dist/index.html"));
-})
+});
+
 mongoose.connect(process.env.MONGODB).then(async () => {
   console.log("Connected to MongoDB");
 }).catch(err => {

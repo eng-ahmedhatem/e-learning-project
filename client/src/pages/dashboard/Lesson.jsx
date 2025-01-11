@@ -267,7 +267,7 @@ export default function Lesson() {
         <div className="w-max flex flex-col justify-center items-center mt-5 gap-5 mx-auto">
           <h2 className=" md:w-max lesson_title_2 relative text-base md:text-3xl ">
             <span className="md:mr-3 inline-block  text-center text-[--c-text-red]">
-              اختبار الدرس الأول
+            {`إختبار الدرس  ${lesson.order_ar}`}
             </span>
           </h2>
             <p style={{fontFamily:"var(--secondFont)"}} className="text-center">  <span className="font-bold text-blue-700"> ملحوظة :-</span> إذا حصلت على درجة في الإختبار <br/>  بما يًعادل <span className="text-[green]">50%</span>  <br/> يعتبر الإختبار مكتمل وتستطيع الإنتقال <br/> للدرس التالي </p>

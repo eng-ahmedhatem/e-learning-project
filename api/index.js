@@ -35,13 +35,13 @@ app.use("/api", exams_router);
 app.use("/api", router_updateUser);
 app.use("/api", lessons_route);
 app.use("/api", dash_router);
-// app.use(express.static(path.join(__dirname, "/client/dist")));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/client/dist/index.html"));
-// });
+app.use(express.static(path.join(__dirname, "/client/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/dist/index.html"));
+});
 
 mongoose.connect(process.env.MONGODB).then(async () => {
-  console.log("Connected to MongoDB");
+  console.log("Database Connected");
 }).catch(err => {
   console.log(err);
 });

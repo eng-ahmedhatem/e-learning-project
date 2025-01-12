@@ -30,7 +30,7 @@ export default function Lesson() {
   }
 
   return (
-    <section className="lesson bg-[#ecf0f4] ">
+    <section className="lesson pb-[100px] bg-[#ecf0f4] ">
       <div onClick={()=>setHidden(!hidden)} className="ai-btn fixed z-50 left-2 bottom-14 lg:left-10 lg:bottom-9">
         <img className="w-14 lg:hidden" src="/imgs/dash/chatbot.png" alt="" />
         <div className="hidden lg:block">

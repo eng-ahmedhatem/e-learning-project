@@ -165,7 +165,7 @@ const Quiz = () => {
     return (
       <div
         style={{ fontFamily: "var(--secondFont)" }}
-        className="d border max-h-[770px] overflow-auto"
+        className="d border max-h-[100%] overflow-auto"
       >
         <div className="w-full mx-auto p-8 bg-white rounded-lg shadow-lg">
           <h1 className="text-3xl font-bold text-center mb-8 text-purple-900">

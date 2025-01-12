@@ -57,7 +57,7 @@ export default function Admin() {
   if (data.length === 0) return <Loader />;
 
   return (
-    <section className="ad relative h-screen">
+    <section className="ad relative h-full">
       <div className="h-max">
         <Dashboard_header />
       </div>

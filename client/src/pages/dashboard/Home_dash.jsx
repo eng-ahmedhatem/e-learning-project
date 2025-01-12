@@ -39,7 +39,7 @@ export default function Home_dash() {
     }
   }
   return (
-    <div className="h-[780px] overflow-auto">
+    <div className="h-full">
       {show_exPre_Alert &&
         <Aleart_exam title={"تعليمات الإختبار"} btn_t={'الذهاب إلى الإختبار'}
           goExam={() => {
@@ -140,10 +140,10 @@ export default function Home_dash() {
             <img className="object-contain" src="/imgs/dash/scale/3.png" alt="" />
             </li>          
           </Aleart_exam>}
-      <h2 className="opj-title w-max relative text-xl md:text-2xl  mb-9">
+      <h2 className="opj-title w-max relative text-xl md:text-2xl   mb-9">
         الأقسام المتاحة
       </h2>
-      <div className="cards grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="cards pb-[100px]  grid grid-cols-1 md:grid-cols-2 gap-5">
         <div
           onClick={e => {
             if (userData.preTest_Status) {

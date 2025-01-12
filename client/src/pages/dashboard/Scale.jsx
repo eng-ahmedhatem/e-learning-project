@@ -42,8 +42,9 @@ export default function Scale() {
   }
 
   return (
-    <section className="">
-      <div className="h-[740px]">
+      <div  className="flex flex-col justify-content-around ">
+        <div className="h-[700px]">
+
         {state.type === "preScale" && state.userData?.group === "control" && (
           <iframe
             className="h-full"
@@ -96,13 +97,14 @@ export default function Scale() {
             <Loader />
           </iframe>
         )}
-        <div onClick={handleClickScale} className="scale-95 hover:scale-100 transition">
-          <button className="bg-[#1499b6] w-[350px] p-2 flex justify-center items-center rounded-full md:rounded-sm hover:bg-transparent text-gray-100 border hover:border-[#1499b6] mx-auto hover:text-[#1499b6] transition">
-            <span className="hidden md:block">اضغط هنا لإتمام عملية التسليم</span>
+                </div>
+
+        <div onClick={handleClickScale} className="scale-95 hover:scale-100 transition mt-5">
+          <button className="bg-[#1499b6] w-[320px] p-2  flex justify-center items-center rounded-full md:rounded-sm hover:bg-transparent text-gray-100 border hover:border-[#1499b6] mx-auto hover:text-[#1499b6] transition">
+            <span className="block">اضغط هنا لإتمام عملية التسليم</span>
             <span className="mr-2 text-2xl md:text-lg" />
           </button>
         </div>
       </div>
-    </section>
   );
 }

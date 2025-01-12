@@ -43,10 +43,10 @@ useEffect(()=>{
   if (!data) return <Loader/>
   if (data && data.role == "admin") return <Admin/>
   return (
-    <section  style={{fontFamily:"var(--mainFont)"}}    className='dashboard bg-[#ecf0f4]  pb-0 grid h-svh '>
+    <section  style={{fontFamily:"var(--mainFont)"}}    className='overflow-hidden dashboard bg-[#ecf0f4]  pb-0 grid h-svh '>
         <Dashboard_header/>
         <Dashboard_nav  theIf ={userGroup} userName={data && data.userName}/>
-        <div className="dash-content overflow-auto overflow-x-hidden relative p-1 md:p-5 rounded-md ">
+        <div className="dash-content h-full overflow-x-hidden relative p-1 md:p-5 rounded-md ">
             <Outlet/>
         </div>
     </section>

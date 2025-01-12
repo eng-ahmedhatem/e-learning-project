@@ -55,7 +55,7 @@ export default function Info() {
   },[navigate])
 if(userData.role == "admin") return ;
   return (
-    <section className="info  overflow-hidden">
+    <section className="info pb-[100px] overflow-hidden">
       <div className="info__head mb-5 grid justify-between grid-cols-1 lg:grid-cols-2 bg-white p-2 lg:p-6 rounded-xl">
         <div className="t-right flex-wrap mb-5 lg:mb-0 flex items-center justify-center lg:justify-start ">
           <div className="img mb-5 lg:mb-0 border border-[--c-text-blue] rounded-full bg-[#ecf0f4]">
